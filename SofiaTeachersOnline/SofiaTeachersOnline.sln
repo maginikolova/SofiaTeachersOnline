@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaTeachersOnline.Databas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaTeachersOnline.Services", "SofiaTeachersOnline.Services\SofiaTeachersOnline.Services.csproj", "{B980C88B-25C6-4F1A-B8A7-CE81BDA26183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaTeachersOnline.Web", "SofiaTeachersOnline.Web\SofiaTeachersOnline.Web.csproj", "{2B78D044-5B9D-43F7-8600-7BDB6FC9CC4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B980C88B-25C6-4F1A-B8A7-CE81BDA26183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B980C88B-25C6-4F1A-B8A7-CE81BDA26183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B980C88B-25C6-4F1A-B8A7-CE81BDA26183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B78D044-5B9D-43F7-8600-7BDB6FC9CC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B78D044-5B9D-43F7-8600-7BDB6FC9CC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B78D044-5B9D-43F7-8600-7BDB6FC9CC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B78D044-5B9D-43F7-8600-7BDB6FC9CC4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

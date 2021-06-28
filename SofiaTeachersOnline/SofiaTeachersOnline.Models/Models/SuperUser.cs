@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SofiaTeachersOnline.Models
 {
-    public class SuperUser : UserBase
+    public class SuperUser : AppUser
     {
     }
 }

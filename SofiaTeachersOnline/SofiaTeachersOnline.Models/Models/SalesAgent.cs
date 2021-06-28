@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Models
 {
-    public class SalesAgent : UserBase
+    public class SalesAgent : AppUser
     {
         public int NumberOfSales { get; set; }
         public ICollection<GeneratedLink> GeneratedLinks { get; set; }

@@ -11,10 +11,10 @@ namespace SofiaTeachersOnline.Models
         public DateTime When { get; set; } = DateTime.UtcNow;
 
         public Guid SenderId { get; set; }
-        public UserBase Sender { get; set; }
+        public AppUser Sender { get; set; }
 
         public Guid ReceiverId { get; set; }
-        public UserBase Receiver { get; set; }
+        public AppUser Receiver { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public DateTime? DeletedOn { get; set; }

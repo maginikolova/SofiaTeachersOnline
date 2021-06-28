@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Models
 {
-    public class Teacher : UserBase
+    public class Teacher : AppUser
     {
        public ICollection<Course> Courses { get; set; }
        public ICollection<Grade> Grades { get; set; }

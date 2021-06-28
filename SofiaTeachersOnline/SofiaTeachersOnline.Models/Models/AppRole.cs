@@ -3,7 +3,7 @@ using System;
 
 namespace SofiaTeachersOnline.Models.Models
 {
-    public class Role : IdentityRole<Guid>
+    public class AppRole : IdentityRole<Guid>
     {
     }
 }

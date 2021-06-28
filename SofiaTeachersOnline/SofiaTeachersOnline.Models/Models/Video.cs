@@ -16,6 +16,6 @@ namespace SofiaTeachersOnline.Models
         public bool IsDeleted { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public Guid? ModifiedByUserId { get; set; }
-        public UserBase ModifiedByUser { get; set; }
+        public AppUser ModifiedByUser { get; set; }
     }
 }

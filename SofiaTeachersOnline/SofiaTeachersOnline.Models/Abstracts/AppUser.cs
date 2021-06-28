@@ -5,12 +5,11 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Models.Abstracts
 {
-    public abstract class UserBase : IdentityUser<Guid>, IUserBase, IEntity
+    public abstract class AppUser : IdentityUser<Guid>, IUserBase, IEntity
     {
         //public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime LastOnline { get; set; }
