@@ -10,7 +10,7 @@ using SofiaTeachersOnline.Database;
 namespace SofiaTeachersOnline.Database.Migrations
 {
     [DbContext(typeof(SofiaTeachersOnlineDbContext))]
-    [Migration("20210628211336_InitialMigration")]
+    [Migration("20210628212555_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,7 +122,35 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Abstracts.AppUser", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.AppRole", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+                });
+
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.AppUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -221,7 +249,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("AppUser");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Course", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -276,7 +304,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.CourseProgress", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.CourseProgress", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -330,7 +358,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Exercise", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Exercise", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -372,7 +400,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 1,
                             Content = "some content",
                             CourseId = 1,
-                            CreatedOn = new DateTime(2021, 6, 28, 21, 13, 35, 276, DateTimeKind.Utc).AddTicks(6140),
+                            CreatedOn = new DateTime(2021, 6, 28, 21, 25, 55, 40, DateTimeKind.Utc).AddTicks(6143),
                             IsDeleted = false
                         },
                         new
@@ -380,12 +408,12 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 2,
                             Content = "some content2",
                             CourseId = 2,
-                            CreatedOn = new DateTime(2021, 6, 28, 21, 13, 35, 276, DateTimeKind.Utc).AddTicks(9355),
+                            CreatedOn = new DateTime(2021, 6, 28, 21, 25, 55, 40, DateTimeKind.Utc).AddTicks(7821),
                             IsDeleted = false
                         });
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.GeneratedLink", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.GeneratedLink", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -405,7 +433,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.ToTable("GeneratedLink");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Grade", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Grade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -466,65 +494,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Models.AppRole", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Models.WannaBeUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNr")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RecordedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WannaBeUsers");
-                });
-
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Notebook", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Notebook", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -554,7 +524,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.ToTable("Notebooks");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Rating", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Rating", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -585,7 +555,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.ToTable("Ratings");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Video", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Video", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -622,9 +592,39 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.ToTable("Videos");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.SalesAgent", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.WannaBeUser", b =>
                 {
-                    b.HasBaseType("SofiaTeachersOnline.Models.Abstracts.AppUser");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RecordedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WannaBeUsers");
+                });
+
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.SalesAgent", b =>
+                {
+                    b.HasBaseType("SofiaTeachersOnline.Database.Models.AppUser");
 
                     b.Property<int>("NumberOfSales")
                         .HasColumnType("int");
@@ -632,9 +632,9 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.HasDiscriminator().HasValue("SalesAgent");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Student", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Student", b =>
                 {
-                    b.HasBaseType("SofiaTeachersOnline.Models.Abstracts.AppUser");
+                    b.HasBaseType("SofiaTeachersOnline.Database.Models.AppUser");
 
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");
@@ -649,7 +649,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "368d6e5d-6e45-43d4-9d03-6b7cda679968",
+                            ConcurrencyStamp = "9a0e6246-07cc-4ae1-9752-dc47b33a9d32",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "magi@mail.com",
                             EmailConfirmed = false,
@@ -658,10 +658,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGI@MAIL.COM",
                             NormalizedUserName = "MAGI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHravmyPigWXc1Wujtjhp+3ck8S1KrEIK5AK5NILOhRlsDolimmXYRwHODZBYM4Z4A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGJ5ubkDYnZXZ1ofgALjk/AgXRMLVjFFO7O6HWQrbzPoEcM6c7Dhl6vGTdv02z/9ng==",
                             PhoneNumber = "0886868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eb3b5157-fdb2-4903-b273-1c236bbb1f73",
+                            SecurityStamp = "d2d8aceb-e979-4460-9bda-ff4b0234560d",
                             TwoFactorEnabled = false,
                             UserName = "magi@mail.com"
                         },
@@ -670,7 +670,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "21b3643d-7940-4f23-810a-3c10b5e428ba",
+                            ConcurrencyStamp = "10425d2b-84cf-4501-8fb2-f4c3cffa31a0",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "phresli@mail.com",
                             EmailConfirmed = false,
@@ -679,25 +679,25 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLI@MAIL.COM",
                             NormalizedUserName = "PHRESLI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPdYBNtH/kumOygHbTQDz/Jacg7kRDhsCrQC+63I9bCVFKTS/hXwTy4he6dBOdK/FQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGP8xlFLDNQMXwNT/OhFn+ERsygHjkTp4PD8YMFYPBgaTha6nHCduAmzMun8i5Mw9w==",
                             PhoneNumber = "0886868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8d3b069c-13a5-4a08-aace-b61c4d5d864d",
+                            SecurityStamp = "d526d873-2ea5-42c1-ad6e-d8d8ccc0f072",
                             TwoFactorEnabled = false,
                             UserName = "phresli@mail.com"
                         });
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.SuperUser", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.SuperUser", b =>
                 {
-                    b.HasBaseType("SofiaTeachersOnline.Models.Abstracts.AppUser");
+                    b.HasBaseType("SofiaTeachersOnline.Database.Models.AppUser");
 
                     b.HasDiscriminator().HasValue("SuperUser");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Teacher", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Teacher", b =>
                 {
-                    b.HasBaseType("SofiaTeachersOnline.Models.Abstracts.AppUser");
+                    b.HasBaseType("SofiaTeachersOnline.Database.Models.AppUser");
 
                     b.HasDiscriminator().HasValue("Teacher");
 
@@ -707,7 +707,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "714505a5-e24d-46d5-9f0b-ddd225c6e3b7",
+                            ConcurrencyStamp = "9c6c3188-5959-4845-a7d9-c5d2ca9195d9",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "magin@mail.com",
                             EmailConfirmed = false,
@@ -716,10 +716,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGINMAIL@MAIL.COM",
                             NormalizedUserName = "MAGIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMkR6guq8Hnm2pZb9v/eSHZTYC90va1RkQKwD19Oz/LyR+jDfIJk6XL+tz3UwnA+QQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIJXdLt14Jv6/WvPBNoumEFLWePbJjGxbaucN0TghhZD0q9YK/FsU39ZVCCv9UEWZA==",
                             PhoneNumber = "0889868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "815fd678-6cfa-4944-bb99-dd1ecd0bf552",
+                            SecurityStamp = "b3fd7ed9-3303-4981-a623-9293e6d664a3",
                             TwoFactorEnabled = false,
                             UserName = "magin@mail.com"
                         },
@@ -728,7 +728,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "7322b581-3e18-47af-a3f8-490e92219940",
+                            ConcurrencyStamp = "44045c75-e915-45c2-938e-898fe5b1163b",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "phreslip@mail.com",
                             EmailConfirmed = false,
@@ -737,10 +737,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLIP@MAIL.COM",
                             NormalizedUserName = "PHRESLIP@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBi/Rj8FBBuASpZ3G3sIRNpwrJ7NHiWoyvwrHtXBZAzLIvBHqVeJLwVv+0Lf0Yu3zg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEZIL6hRSe9ZoKT9zdo3tfiEbaI3+X1U9S+xKjSuaObcWBw6M6I+EZRoa2xQxp5x2g==",
                             PhoneNumber = "0812868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "490b9b84-727d-4543-b418-55797d62be9a",
+                            SecurityStamp = "c1754fca-4915-47fb-9fe4-f1d19ffa73fd",
                             TwoFactorEnabled = false,
                             UserName = "phreslip@mail.com"
                         });
@@ -748,7 +748,7 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Models.AppRole", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -757,7 +757,7 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -766,7 +766,7 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -775,13 +775,13 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Models.AppRole", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -790,127 +790,127 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Course", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Course", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", "ModifiedByUser")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
                         .WithMany("ModifiedCourses")
                         .HasForeignKey("ModifiedByUserId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("SofiaTeachersOnline.Models.Student", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Student", null)
                         .WithMany("Courses")
                         .HasForeignKey("StudentId");
 
-                    b.HasOne("SofiaTeachersOnline.Models.Teacher", "Teacher")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Teacher", "Teacher")
                         .WithMany("Courses")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.CourseProgress", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.CourseProgress", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Course", "Course")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Course", "Course")
                         .WithMany("CourseProgress")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Student", "Student")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Student", "Student")
                         .WithMany("CourseProgress")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Exercise", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Exercise", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Course", "Course")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Course", "Course")
                         .WithMany("Exercises")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", "ModifiedByUser")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
                         .WithMany("ModifiedExercises")
                         .HasForeignKey("ModifiedByUserId");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.GeneratedLink", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.GeneratedLink", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.SalesAgent", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.SalesAgent", null)
                         .WithMany("GeneratedLinks")
                         .HasForeignKey("SalesAgentId");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Grade", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Grade", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Exercise", "Exercise")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Exercise", "Exercise")
                         .WithMany("Grades")
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Student", "Student")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Student", "Student")
                         .WithMany("Grades")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Teacher", "Teacher")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Teacher", "Teacher")
                         .WithMany("Grades")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Notebook", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Notebook", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Student", "Student")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Student", "Student")
                         .WithOne("Notebook")
-                        .HasForeignKey("SofiaTeachersOnline.Models.Notebook", "StudentId")
+                        .HasForeignKey("SofiaTeachersOnline.Database.Models.Notebook", "StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Rating", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Rating", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Student", "GivenBy")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Student", "GivenBy")
                         .WithMany("RatingsGiven")
                         .HasForeignKey("GivenById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Teacher", "GivenTo")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Teacher", "GivenTo")
                         .WithMany("RatingsReceived")
                         .HasForeignKey("GivenToId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Video", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Video", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Course", "Course")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Course", "Course")
                         .WithMany("Videos")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SofiaTeachersOnline.Models.Abstracts.AppUser", "ModifiedByUser")
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
                         .WithMany("ModifiedVideos")
                         .HasForeignKey("ModifiedByUserId");
                 });
 
-            modelBuilder.Entity("SofiaTeachersOnline.Models.Student", b =>
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Student", b =>
                 {
-                    b.HasOne("SofiaTeachersOnline.Models.Course", null)
+                    b.HasOne("SofiaTeachersOnline.Database.Models.Course", null)
                         .WithMany("Students")
                         .HasForeignKey("CourseId");
                 });

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SofiaTeachersOnline.Models;
-using SofiaTeachersOnline.Models.Enums;
+using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Database.Models.Enums;
 using System;
 using System.Collections.Generic;
 

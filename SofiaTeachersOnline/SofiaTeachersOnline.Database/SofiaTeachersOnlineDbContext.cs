@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Database.Seeder;
-using SofiaTeachersOnline.Models;
-using SofiaTeachersOnline.Models.Abstracts;
-using SofiaTeachersOnline.Models.Models;
 using System;
 
 namespace SofiaTeachersOnline.Database

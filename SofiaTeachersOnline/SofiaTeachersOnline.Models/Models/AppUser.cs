@@ -3,9 +3,9 @@ using SofiaTeachersOnline.Models.Contracts;
 using System;
 using System.Collections.Generic;
 
-namespace SofiaTeachersOnline.Models.Abstracts
+namespace SofiaTeachersOnline.Models.Models
 {
-    public abstract class AppUser : IdentityUser<Guid>, IUserBase, IEntity
+    public class AppUser : IdentityUser<Guid>, IUserBase, IEntity
     {
         //public Guid Id { get; set; }
         public string FirstName { get; set; }
