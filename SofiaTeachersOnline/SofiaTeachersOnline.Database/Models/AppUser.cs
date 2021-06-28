@@ -7,7 +7,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class AppUser : IdentityUser<Guid>, IUserBase, IEntity
     {
-        //public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -22,7 +21,7 @@ namespace SofiaTeachersOnline.Database.Models
         //public ICollection<Message> MessagesSent { get; set; }
         //public ICollection<Message> MessagesReceived { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public DateTime? DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
     }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Database.Seeder;
 using System;
+using System.Reflection;
 
 namespace SofiaTeachersOnline.Database
 {
@@ -30,6 +31,16 @@ namespace SofiaTeachersOnline.Database
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.Seed();
+        }
+    }
+}
+
+
+/***********************************************************
+Either using config files, or registering this directly in the OnModelCreating() method
+
             builder.Entity<SalesAgent>(entity =>
             {
                 entity.HasMany(e => e.GeneratedLinks);
@@ -76,7 +87,4 @@ namespace SofiaTeachersOnline.Database
                     .OnDelete(DeleteBehavior.NoAction);
             });
 
-            builder.Seed();
-        }
-    }
-}
+***********************************************************/

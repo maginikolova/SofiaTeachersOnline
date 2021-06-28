@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SofiaTeachersOnline.Database.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigraion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -126,12 +126,12 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentId = table.Column<Guid>(nullable: false),
-                    CourseId = table.Column<int>(nullable: false),
-                    Progress = table.Column<double>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    Progress = table.Column<double>(nullable: false),
+                    StudentId = table.Column<Guid>(nullable: false),
+                    CourseId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -144,10 +144,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TeacherId = table.Column<Guid>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    TeacherId = table.Column<Guid>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     ModifiedByUserId = table.Column<Guid>(nullable: true),
                     StudentId = table.Column<Guid>(nullable: true)
@@ -206,11 +206,11 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CourseId = table.Column<int>(nullable: false),
-                    Content = table.Column<string>(nullable: true),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    Content = table.Column<string>(nullable: true),
+                    CourseId = table.Column<int>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     ModifiedByUserId = table.Column<Guid>(nullable: true)
                 },
@@ -257,11 +257,11 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentId = table.Column<Guid>(nullable: false),
-                    Notes = table.Column<string>(nullable: true),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    Notes = table.Column<string>(nullable: true),
+                    StudentId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,11 +280,11 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GivenById = table.Column<Guid>(nullable: false),
-                    GivenToId = table.Column<Guid>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    GivenById = table.Column<Guid>(nullable: false),
+                    GivenToId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,11 +308,11 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(nullable: true),
-                    CourseId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    Url = table.Column<string>(nullable: true),
+                    CourseId = table.Column<int>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     ModifiedByUserId = table.Column<Guid>(nullable: true)
                 },
@@ -339,13 +339,13 @@ namespace SofiaTeachersOnline.Database.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     Mark = table.Column<int>(nullable: false),
                     TeacherId = table.Column<Guid>(nullable: false),
                     StudentId = table.Column<Guid>(nullable: false),
-                    ExerciseId = table.Column<int>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
+                    ExerciseId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -373,8 +373,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Discriminator", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LastOnline", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePic", "SecurityStamp", "TwoFactorEnabled", "UserName", "CourseId" },
                 values: new object[,]
                 {
-                    { new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "9a0e6246-07cc-4ae1-9752-dc47b33a9d32", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Student", "magi@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "MAGI@MAIL.COM", "MAGI@MAIL.COM", "AQAAAAEAACcQAAAAEGJ5ubkDYnZXZ1ofgALjk/AgXRMLVjFFO7O6HWQrbzPoEcM6c7Dhl6vGTdv02z/9ng==", "0886868686", false, null, "d2d8aceb-e979-4460-9bda-ff4b0234560d", false, "magi@mail.com", null },
-                    { new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "10425d2b-84cf-4501-8fb2-f4c3cffa31a0", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Student", "phresli@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "PHRESLI@MAIL.COM", "PHRESLI@MAIL.COM", "AQAAAAEAACcQAAAAEGP8xlFLDNQMXwNT/OhFn+ERsygHjkTp4PD8YMFYPBgaTha6nHCduAmzMun8i5Mw9w==", "0886868688", false, null, "d526d873-2ea5-42c1-ad6e-d8d8ccc0f072", false, "phresli@mail.com", null }
+                    { new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "200645c1-275f-4d70-9f68-f9ffce09599e", new DateTime(2021, 6, 28, 22, 2, 55, 304, DateTimeKind.Utc).AddTicks(4502), null, "Student", "magi@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "MAGI@MAIL.COM", "MAGI@MAIL.COM", "AQAAAAEAACcQAAAAENAieU428nn6sLt5mgA97r4Xzyk2PnTwC64hxgKJmLXCYqC/e/Qz1AXyMlmAHZ2hlA==", "0886868686", false, null, "c73c63bc-f353-4b5a-aa72-85bf5f2a5567", false, "magi@mail.com", null },
+                    { new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "6560daea-db0b-4322-95bb-7ef349306d0e", new DateTime(2021, 6, 28, 22, 2, 55, 305, DateTimeKind.Utc).AddTicks(408), null, "Student", "phresli@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "PHRESLI@MAIL.COM", "PHRESLI@MAIL.COM", "AQAAAAEAACcQAAAAEIf1S0/VNY/uj1LAmcREa+AufdfQEqk7yjrsjRfCrkqS0keNBQKliC9ZCJhCP730Ww==", "0886868688", false, null, "51b56398-d7bd-4e01-9352-37021aa19111", false, "phresli@mail.com", null }
                 });
 
             migrationBuilder.InsertData(
@@ -382,27 +382,27 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Discriminator", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LastOnline", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePic", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "9c6c3188-5959-4845-a7d9-c5d2ca9195d9", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Teacher", "magin@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "MAGINMAIL@MAIL.COM", "MAGIN@MAIL.COM", "AQAAAAEAACcQAAAAEIJXdLt14Jv6/WvPBNoumEFLWePbJjGxbaucN0TghhZD0q9YK/FsU39ZVCCv9UEWZA==", "0889868686", false, null, "b3fd7ed9-3303-4981-a623-9293e6d664a3", false, "magin@mail.com" },
-                    { new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "44045c75-e915-45c2-938e-898fe5b1163b", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Teacher", "phreslip@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "PHRESLIP@MAIL.COM", "PHRESLIP@MAIL.COM", "AQAAAAEAACcQAAAAEEZIL6hRSe9ZoKT9zdo3tfiEbaI3+X1U9S+xKjSuaObcWBw6M6I+EZRoa2xQxp5x2g==", "0812868688", false, null, "c1754fca-4915-47fb-9fe4-f1d19ffa73fd", false, "phreslip@mail.com" }
+                    { new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "a187f40b-f5e3-4f6b-9b8f-c2b375a3434d", new DateTime(2021, 6, 28, 22, 2, 55, 336, DateTimeKind.Utc).AddTicks(8221), null, "Teacher", "magin@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "MAGINMAIL@MAIL.COM", "MAGIN@MAIL.COM", "AQAAAAEAACcQAAAAEDXxyR5TOGsWVUO9d/bnBXlMsK8oxozRLpHAqZvHPM4hwoFzCW1gM0tNr9TPVaLM1A==", "0889868686", false, null, "251f41eb-c675-4baf-9325-987d5e86d797", false, "magin@mail.com" },
+                    { new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e718264f-41b6-42a3-8522-584ee6fbef61", new DateTime(2021, 6, 28, 22, 2, 55, 336, DateTimeKind.Utc).AddTicks(8369), null, "Teacher", "phreslip@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, "PHRESLIP@MAIL.COM", "PHRESLIP@MAIL.COM", "AQAAAAEAACcQAAAAENOe1sX0J2i5myfwDx8hQben6fdUrhTmK6LG8HACNp0nCRIzMoqq6s0IyBG2LrpcGA==", "0812868688", false, null, "88e79804-c13e-4106-bf7b-2d29fc56323a", false, "phreslip@mail.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Courses",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null, null, null, new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 1, new DateTime(2021, 6, 28, 22, 2, 55, 357, DateTimeKind.Utc).AddTicks(2554), null, false, null, null, null, new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.InsertData(
                 table: "Courses",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId" },
-                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 2, new DateTime(2021, 6, 28, 22, 2, 55, 357, DateTimeKind.Utc).AddTicks(4408), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.InsertData(
                 table: "CourseProgresses",
                 columns: new[] { "Id", "CourseId", "CreatedOn", "DeletedOn", "IsDeleted", "Progress", "StudentId" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, 10.0, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270") },
-                    { 2, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, 20.0, new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845") }
+                    { 1, 1, new DateTime(2021, 6, 28, 22, 2, 55, 357, DateTimeKind.Utc).AddTicks(6182), null, false, 10.0, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270") },
+                    { 2, 2, new DateTime(2021, 6, 28, 22, 2, 55, 357, DateTimeKind.Utc).AddTicks(9012), null, false, 20.0, new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845") }
                 });
 
             migrationBuilder.InsertData(
@@ -410,19 +410,19 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "Content", "CourseId", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn" },
                 values: new object[,]
                 {
-                    { 1, "some content", 1, new DateTime(2021, 6, 28, 21, 25, 55, 40, DateTimeKind.Utc).AddTicks(6143), null, false, null, null },
-                    { 2, "some content2", 2, new DateTime(2021, 6, 28, 21, 25, 55, 40, DateTimeKind.Utc).AddTicks(7821), null, false, null, null }
+                    { 1, "some content", 1, new DateTime(2021, 6, 28, 22, 2, 55, 358, DateTimeKind.Utc).AddTicks(557), null, false, null, null },
+                    { 2, "some content2", 2, new DateTime(2021, 6, 28, 22, 2, 55, 358, DateTimeKind.Utc).AddTicks(2318), null, false, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "ExerciseId", "IsDeleted", "Mark", "StudentId", "TeacherId" },
-                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, false, 6, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 2, new DateTime(2021, 6, 28, 22, 2, 55, 358, DateTimeKind.Utc).AddTicks(6820), null, 1, false, 6, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "ExerciseId", "IsDeleted", "Mark", "StudentId", "TeacherId" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, false, 4, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 1, new DateTime(2021, 6, 28, 22, 2, 55, 358, DateTimeKind.Utc).AddTicks(3738), null, 2, false, 4, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

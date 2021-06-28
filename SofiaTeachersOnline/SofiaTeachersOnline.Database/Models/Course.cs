@@ -1,10 +1,11 @@
-﻿using SofiaTeachersOnline.Database.Models.Contracts;
+﻿using SofiaTeachersOnline.Database.Models.Abstracts;
+using SofiaTeachersOnline.Database.Models.Contracts;
 using System;
 using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Database.Models
 {
-    public class Course : IEntity, IModifiable, ICourse
+    public class Course : Entity, IModifiable, ICourse
     {
         public int Id { get; set; }
         public Guid TeacherId { get; set; }
@@ -18,9 +19,6 @@ namespace SofiaTeachersOnline.Database.Models
         public ICollection<Video> Videos { get; set; }
         public ICollection<Exercise> Exercises { get; set; }
 
-        public DateTime CreatedOn { get; set; }
-        public DateTime? DeletedOn { get; set; }
-        public bool IsDeleted { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public Guid? ModifiedByUserId { get; set; }
         public AppUser ModifiedByUser { get; set; }
