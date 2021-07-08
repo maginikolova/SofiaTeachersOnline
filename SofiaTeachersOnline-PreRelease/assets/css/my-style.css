@@ -1,0 +1,10 @@
+.social-medias {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+}
+
+.social-media {
+    font-size: 30px;
+    margin-right: 30px;
+}
