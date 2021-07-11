@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SofiaTeachersOnline.Services\SofiaTeachersOnline.Services.csproj" />
+    <ProjectReference Include="..\SofiaTeachersOnline.Shared\SofiaTeachersOnline.Shared.csproj" />
   </ItemGroup>
 
 

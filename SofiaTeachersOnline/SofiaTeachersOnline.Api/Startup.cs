@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
+using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.DTOs;
 using SofiaTeachersOnline.Services.Services;
 using SofiaTeachersOnline.Services.Services.Contracts;
 
@@ -24,6 +26,7 @@ namespace SofiaTeachersOnline.Api
         {
             services.AddControllers();
 
+            services.AddScoped<IEntityService<Grade, GradeDTO>, GradeService>();
             services.AddScoped<IWannaBeUserService, WannaBeUserService>();
 
             services.AddDbContext<SofiaTeachersOnlineDbContext>

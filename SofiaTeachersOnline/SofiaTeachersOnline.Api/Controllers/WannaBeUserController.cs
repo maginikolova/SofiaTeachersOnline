@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Services.Services.Contracts;
+using System;
 using System.Threading.Tasks;
 
 namespace SofiaTeachersOnline.Api.Controllers
@@ -13,7 +14,7 @@ namespace SofiaTeachersOnline.Api.Controllers
 
         public WannaBeUserController(IWannaBeUserService wannaBeUserService)
         {
-            this.wannaBeUserService = wannaBeUserService;   // TODO: Add validation if null
+            this.wannaBeUserService = wannaBeUserService ?? throw new ArgumentNullException(nameof(wannaBeUserService));
         }
 
         [HttpGet]

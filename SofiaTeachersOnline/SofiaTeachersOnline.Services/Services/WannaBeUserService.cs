@@ -12,14 +12,14 @@ namespace SofiaTeachersOnline.Services.Services
 
         public WannaBeUserService(SofiaTeachersOnlineDbContext sofiaTeachersOnlineDBContext)
         {
-            this.sofiaTeachersOnlineDBContext = sofiaTeachersOnlineDBContext;   //TODO: Add validation if null
+            this.sofiaTeachersOnlineDBContext = sofiaTeachersOnlineDBContext ?? throw new ArgumentNullException(nameof(sofiaTeachersOnlineDBContext));
         }
 
         public async Task CreateWannaBeUser(WannaBeUser wannaBeUser)
         {
             if (wannaBeUser == null)
             {
-                throw new ArgumentNullException(/*string.Join(ExceptionMessages.InvalidEntry, nameof(WannaBeUser))*/);  // TODO: Add ex. msg
+                throw new ArgumentNullException(nameof(wannaBeUser));
             }
 
             await this.sofiaTeachersOnlineDBContext.WannaBeUsers.AddAsync(wannaBeUser);
