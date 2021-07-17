@@ -1,4 +1,5 @@
-﻿using SofiaTeachersOnline.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
 using SofiaTeachersOnline.Shared;
@@ -20,27 +21,13 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
             this._dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public Task<TEntity> CreateEntityAsync(TEntity entityDTO)
+        public async Task<TEntity> CreateEntityAsync(TEntity entityDTO)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteEntityAsync(int id)
-        {
-            // TODO: Add validation for entityId
-
-            var entity = await this._dbContext.FindAsync<TEntity>(id);
-
-            if (entity == null)
-            {
-                throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
-            }
-
-            entity.DeletedOn = DateTime.Now;
-            entity.IsDeleted = true;
-            // TODO: Should we add DeletedBy?
+            this._dbContext.Add(entityDTO);
 
             await this._dbContext.SaveChangesAsync();
+
+            return entityDTO;   // Should we return the DTO or the real entity from the DB?
         }
 
         public IQueryable<TEntity> GetAllEntities()
@@ -49,11 +36,58 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
         public async Task<TEntity> GetEntityByIdAsync(int id)
             => await this._dbContext.FindAsync<TEntity>(id);    // TODO: Will it be able to Include?
 
-        public Task<TEntity> PatchEntityAsync(int id)
+        public async Task<TEntity> UpdateEntityAsync(int id, TEntity entityDTO)
+        {
+            var entity = await this._dbContext.FindAsync<TEntity>(id);
+
+            if (entity == null)
+            {
+                throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
+                // TODO: Better error hanling!
+            }
+
+            _dbContext.Entry(entity).State = EntityState.Detached;
+            var updatedEntity = this._dbContext.Update(entityDTO);
+            await this._dbContext.SaveChangesAsync();
+
+            return updatedEntity.Entity;
+        }
+
+/*        public async Task<TEntity> PatchEntityAsync(int id, JsonPatchDocument<TEntity> entityPatch)     // TODO: PATCH NOT WORKING!!!
         {
             // TODO: Add validation for entityId
 
-            throw new NotImplementedException();
+            var entity = await this._dbContext.FindAsync<TEntity>(id);
+            
+            if (entity == null)
+            {
+                throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
+                // TODO: Better error hanling!
+            }
+
+            // TODO: Add EditedOn and EditedBy?
+            entityPatch.ApplyTo(entity);
+            await this._dbContext.SaveChangesAsync();
+            return default;
+        }*/
+
+        public async Task DeleteEntityAsync(int id)
+        {
+            // TODO: Add validation for entityId?   
+
+            var entity = await this._dbContext.FindAsync<TEntity>(id);
+
+            if (entity == null)
+            {
+                throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id)); 
+                // TODO: Better error hanling!
+            }
+
+            entity.DeletedOn = DateTime.Now;
+            entity.IsDeleted = true;
+            // TODO: Should we add DeletedBy?
+
+            await this._dbContext.SaveChangesAsync();
         }
     }
 }

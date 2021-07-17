@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SofiaTeachersOnline.Database\SofiaTeachersOnline.Database.csproj" />
     <ProjectReference Include="..\SofiaTeachersOnline.Shared\SofiaTeachersOnline.Shared.csproj" />
   </ItemGroup>
