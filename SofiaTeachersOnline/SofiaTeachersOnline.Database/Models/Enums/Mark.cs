@@ -1,6 +1,6 @@
 ﻿namespace SofiaTeachersOnline.Database.Models.Enums
 {
-    public enum Mark    // TODO: make it byte
+    public enum Mark : byte
     {
         F = 2,
         D = 3, 

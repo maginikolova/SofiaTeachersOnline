@@ -6,7 +6,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class Grade : Entity
     {
-        public int Id { get; set; }
         public Mark Mark { get; set; }
 
         public Guid TeacherId { get; set; }

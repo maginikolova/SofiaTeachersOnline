@@ -7,7 +7,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class Course : Entity, IModifiable, ICourse
     {
-        public int Id { get; set; }
         public Guid TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SofiaTeachersOnline.Database;
+﻿using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
 using SofiaTeachersOnline.Shared;
@@ -27,7 +26,7 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
 
             await this._dbContext.SaveChangesAsync();
 
-            return entityDTO;   // Should we return the DTO or the real entity from the DB?
+                return entityDTO;   // Should we return the DTO or the real entity from the DB?
         }
 
         public IQueryable<TEntity> GetAllEntities()
@@ -46,11 +45,13 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
                 // TODO: Better error hanling!
             }
 
-            _dbContext.Entry(entity).State = EntityState.Detached;
-            var updatedEntity = this._dbContext.Update(entityDTO);
+            //_dbContext.Entry(entity).State = EntityState.Detached;
+            //var updatedEntity = this._dbContext.Update(entityDTO);    // TODO: Which PUT method is better?
+
+            this._dbContext.Entry(entity).CurrentValues.SetValues(entityDTO);
             await this._dbContext.SaveChangesAsync();
 
-            return updatedEntity.Entity;
+            return entity;
         }
 
 /*        public async Task<TEntity> PatchEntityAsync(int id, JsonPatchDocument<TEntity> entityPatch)     // TODO: PATCH NOT WORKING!!!
@@ -58,7 +59,7 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
             // TODO: Add validation for entityId
 
             var entity = await this._dbContext.FindAsync<TEntity>(id);
-            
+
             if (entity == null)
             {
                 throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
@@ -80,7 +81,7 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
             if (entity == null)
             {
                 throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id)); 
-                // TODO: Better error hanling!
+                // TODO: Better error handling!
             }
 
             entity.DeletedOn = DateTime.Now;

@@ -7,7 +7,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class Exercise : Entity, IModifiable, IExercise
     {
-        public int Id { get; set; }
         public string Content { get; set; }
 
         public int CourseId { get; set; }

@@ -5,7 +5,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class CourseProgress : Entity
     {
-        public int Id { get; set; }
         public double Progress { get; set; }
 
         public Guid StudentId { get; set; }

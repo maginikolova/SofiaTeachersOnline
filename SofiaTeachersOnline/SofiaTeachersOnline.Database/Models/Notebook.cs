@@ -5,7 +5,6 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class Notebook : Entity
     {
-        public int Id { get; set; }
         public string Notes { get; set; }
 
         public Guid StudentId { get; set; }
