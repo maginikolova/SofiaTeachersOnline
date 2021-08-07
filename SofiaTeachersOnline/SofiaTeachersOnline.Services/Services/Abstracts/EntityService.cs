@@ -22,11 +22,12 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
 
         public async Task<TEntity> CreateEntityAsync(TEntity entityDTO)
         {
+            // TODO: Should we validate if entityDTO is null?
             this._dbContext.Add(entityDTO);
 
             await this._dbContext.SaveChangesAsync();
 
-                return entityDTO;   // Should we return the DTO or the real entity from the DB?
+            return entityDTO;   // Should we return the DTO or the real entity from the DB?
         }
 
         public IQueryable<TEntity> GetAllEntities()

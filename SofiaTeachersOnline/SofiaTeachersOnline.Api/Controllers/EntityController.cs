@@ -39,7 +39,7 @@ namespace SofiaTeachersOnline.Api.Controllers
         {
             var result = await _entityService.GetEntityByIdAsync(id);
 
-            return Ok(result);
+            return Ok(result);  // TODO: How to make it return NotFound?
         }
 
         [HttpPut("{id}")]
