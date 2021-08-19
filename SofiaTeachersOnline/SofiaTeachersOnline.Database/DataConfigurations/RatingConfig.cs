@@ -8,6 +8,8 @@ namespace SofiaTeachersOnline.Database.DataConfigurations
     {
         public void Configure(EntityTypeBuilder<Rating> builder)
         {
+            builder.HasQueryFilter(x => !x.IsDeleted);
+
             builder.HasOne(c => c.GivenTo)
                 .WithMany(t => t.RatingsReceived)
                 .HasForeignKey(c => c.GivenToId)

@@ -7,12 +7,16 @@ namespace SofiaTeachersOnline.Database.Models
 {
     public class Course : Entity, IModifiable, ICourse
     {
+        public string Title { get; set; }
+
         public Guid TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
         //bool isLatest?
         //coureVersion?
+        // TODO: Course thumbnail?
 
+        // TODO: have interfaces instead of classes? IExercise/IVideo/...?
         public ICollection<CourseProgress> CourseProgress { get; set; }
         public ICollection<Student> Students { get; set; }
         public ICollection<Video> Videos { get; set; }

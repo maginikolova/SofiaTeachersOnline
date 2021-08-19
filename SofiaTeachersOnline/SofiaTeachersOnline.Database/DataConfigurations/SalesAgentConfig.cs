@@ -8,6 +8,8 @@ namespace SofiaTeachersOnline.Database.DataConfigurations
     {
         public void Configure(EntityTypeBuilder<SalesAgent> builder)
         {
+            //builder.HasQueryFilter(x => !x.IsDeleted);
+
             builder.HasMany(e => e.GeneratedLinks);
         }
     }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Database.Models
 {
-    public class AppUser : IdentityUser<Guid>, IUserBase, IEntity
+    public class AppUser : IdentityUser<Guid>, IUserBase, IEntity, IModifiable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,6 +21,10 @@ namespace SofiaTeachersOnline.Database.Models
         //public ICollection<Message> MessagesSent { get; set; }
         //public ICollection<Message> MessagesReceived { get; set; }
 
+        public DateTime? ModifiedOn { get; set; }
+        public Guid? ModifiedByUserId { get; set; }
+        public AppUser ModifiedByUser { get; set; }
+        
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public DateTime? DeletedOn { get; set; }
         public bool IsDeleted { get; set; }

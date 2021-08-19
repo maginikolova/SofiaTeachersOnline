@@ -8,6 +8,8 @@ namespace SofiaTeachersOnline.Database.DataConfigurations
     {
         public void Configure(EntityTypeBuilder<Student> builder)
         {
+            //builder.HasQueryFilter(x => !x.IsDeleted);  // TODO: Can it be moved somewhere else to not be repeated?
+
             builder.HasMany(c => c.Courses);
         }
     }

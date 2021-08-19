@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SofiaTeachersOnline.Database.Models.Contracts
+﻿namespace SofiaTeachersOnline.Database.Models.Contracts
 {
-    interface ICourse
+    public interface ICourse
     {
+        // TODO: Fix this interface and use it in different classes
         public Teacher Teacher { get; set; }
     }
 }

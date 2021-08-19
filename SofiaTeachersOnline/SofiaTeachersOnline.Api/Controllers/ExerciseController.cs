@@ -5,10 +5,10 @@ using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Api.Controllers
 {
-    public class GradeController : EntityController<Grade, GradeDTO>
+    public class ExerciseController : EntityController<Exercise, ExerciseDTO>
     {
-        public GradeController(IEntityService<Grade, GradeDTO> gradeService)
-            : base(gradeService)
+        public ExerciseController(IEntityService<Exercise, ExerciseDTO> entityService)
+            : base(entityService)
         {
         }
     }

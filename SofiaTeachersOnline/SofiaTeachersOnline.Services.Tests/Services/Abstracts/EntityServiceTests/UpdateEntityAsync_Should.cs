@@ -43,7 +43,7 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTes
             };
 
             // Act
-            var result = await entityServiceMock.UpdateEntityAsync(toBeUpdatedId, expected);
+            var result = await entityServiceMock.UpdateEntityAsync(toBeUpdatedId, expected, null);
 
             // Assert
             Assert.AreEqual(toBeUpdatedId, result.Id);
@@ -60,7 +60,7 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTes
             var toBeUpdatedId = this._entities.First().Id;
 
             // Act & Assert
-            Assert.ThrowsAsync<ArgumentNullException>(() => entityServiceMock.UpdateEntityAsync(toBeUpdatedId, null));
+            Assert.ThrowsAsync<ArgumentNullException>(() => entityServiceMock.UpdateEntityAsync(toBeUpdatedId, null, null));
         }
     }
 }

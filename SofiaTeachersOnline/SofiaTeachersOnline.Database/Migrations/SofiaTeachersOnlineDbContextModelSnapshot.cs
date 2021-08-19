@@ -202,6 +202,12 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<Guid?>("ModifiedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -233,6 +239,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ModifiedByUserId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -275,6 +283,9 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ModifiedByUserId");
@@ -289,14 +300,14 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(1659),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 720, DateTimeKind.Utc).AddTicks(3899),
                             IsDeleted = false,
                             TeacherId = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845")
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(2850),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 720, DateTimeKind.Utc).AddTicks(5198),
                             IsDeleted = false,
                             TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
                         });
@@ -321,8 +332,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<double>("Progress")
-                        .HasColumnType("float");
+                    b.Property<float>("Progress")
+                        .HasColumnType("real");
 
                     b.Property<Guid>("StudentId")
                         .HasColumnType("uniqueidentifier");
@@ -340,18 +351,18 @@ namespace SofiaTeachersOnline.Database.Migrations
                         {
                             Id = 1,
                             CourseId = 1,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(4254),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 720, DateTimeKind.Utc).AddTicks(6376),
                             IsDeleted = false,
-                            Progress = 10.0,
+                            Progress = 10f,
                             StudentId = new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270")
                         },
                         new
                         {
                             Id = 2,
                             CourseId = 2,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(5863),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 720, DateTimeKind.Utc).AddTicks(8196),
                             IsDeleted = false,
-                            Progress = 20.0,
+                            Progress = 20f,
                             StudentId = new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845")
                         });
                 });
@@ -398,7 +409,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 1,
                             Content = "some content",
                             CourseId = 1,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(6906),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 720, DateTimeKind.Utc).AddTicks(9240),
                             IsDeleted = false
                         },
                         new
@@ -406,7 +417,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 2,
                             Content = "some content2",
                             CourseId = 2,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(8003),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 721, DateTimeKind.Utc).AddTicks(301),
                             IsDeleted = false
                         });
                 });
@@ -453,6 +464,12 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.Property<byte>("Mark")
                         .HasColumnType("tinyint");
 
+                    b.Property<Guid?>("ModifiedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<Guid>("StudentId")
                         .HasColumnType("uniqueidentifier");
 
@@ -462,6 +479,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ExerciseId");
+
+                    b.HasIndex("ModifiedByUserId");
 
                     b.HasIndex("StudentId");
 
@@ -473,7 +492,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 602, DateTimeKind.Utc).AddTicks(9011),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 721, DateTimeKind.Utc).AddTicks(1358),
                             ExerciseId = 2,
                             IsDeleted = false,
                             Mark = (byte)4,
@@ -483,7 +502,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 603, DateTimeKind.Utc).AddTicks(1003),
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 721, DateTimeKind.Utc).AddTicks(3542),
                             ExerciseId = 1,
                             IsDeleted = false,
                             Mark = (byte)6,
@@ -508,6 +527,12 @@ namespace SofiaTeachersOnline.Database.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid?>("ModifiedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
@@ -515,6 +540,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ModifiedByUserId");
 
                     b.HasIndex("StudentId")
                         .IsUnique();
@@ -647,8 +674,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "c94cd588-2b83-4bd3-9069-6dae1ac89ade",
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 562, DateTimeKind.Utc).AddTicks(2064),
+                            ConcurrencyStamp = "dc58d47d-eafd-4094-a181-75a617206ec1",
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 676, DateTimeKind.Utc).AddTicks(3969),
                             Email = "magi@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -656,10 +683,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGI@MAIL.COM",
                             NormalizedUserName = "MAGI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOOYEiNokMK3ocMw5LSwj9dyrEDYTKAor+tdDvkQl10UStq3pXxiqtVcoM1ai+V2WA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMyMScRVcyxmMNR8iRLHitvaWBVv1X2XdPHZoF/m5ShvI2P70915rV77OtdnGpRPEw==",
                             PhoneNumber = "0886868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "34e30308-02f2-4c5d-b1e1-eb3845eeb0e3",
+                            SecurityStamp = "189337b3-d81c-4896-93c1-9074b0a057c5",
                             TwoFactorEnabled = false,
                             UserName = "magi@mail.com"
                         },
@@ -668,8 +695,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "c11f983f-13d9-4001-8847-9727eb369081",
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 562, DateTimeKind.Utc).AddTicks(6261),
+                            ConcurrencyStamp = "8edf0b31-611f-4edd-b638-7847e2c3f52e",
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 677, DateTimeKind.Utc).AddTicks(5560),
                             Email = "phresli@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -677,10 +704,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLI@MAIL.COM",
                             NormalizedUserName = "PHRESLI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEClqwfSeulhtRzPgUqWIa8VWwZRKnclIFG/e+/TnlbdLU3T4SaI+l6eAUtr42WnETA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI1/kQ/HjFIuYL8qS5fXGGznAshAhvikwGymsEP88NihsF/bGNqQZmiDdatj5PlObQ==",
                             PhoneNumber = "0886868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6798ed66-4fd0-41e4-820b-0e37d82ae8c4",
+                            SecurityStamp = "3a4f38d7-0b73-4447-8781-387f5dfcdba9",
                             TwoFactorEnabled = false,
                             UserName = "phresli@mail.com"
                         });
@@ -705,8 +732,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "ee0ec5e2-017f-47d8-9e5d-156671723e2e",
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 586, DateTimeKind.Utc).AddTicks(4548),
+                            ConcurrencyStamp = "ca06b2fa-56a9-4497-8ade-f03b39c082f5",
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 703, DateTimeKind.Utc).AddTicks(5883),
                             Email = "magin@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -714,10 +741,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGINMAIL@MAIL.COM",
                             NormalizedUserName = "MAGIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAOsI7n63g8cDp1ujnysXcNXREEk0s9u2FBtyH+b64CB4UzZZ9qmDZ4nafG51E71EA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMfxovEZ2lxIaJp8SsyGgtVckiw8tDqyt44z+g6c57RVmIwTBXgoHo868mvOMzEu5g==",
                             PhoneNumber = "0889868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0e911cf4-1b55-49a6-8ebb-0710c854c1ef",
+                            SecurityStamp = "8479859d-f9c6-4712-b82e-087183e88e6a",
                             TwoFactorEnabled = false,
                             UserName = "magin@mail.com"
                         },
@@ -726,8 +753,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "32e133e3-bc55-4dc5-9c5a-931ff24b6429",
-                            CreatedOn = new DateTime(2021, 8, 5, 20, 40, 22, 586, DateTimeKind.Utc).AddTicks(4661),
+                            ConcurrencyStamp = "f0808a3b-7f50-4aef-bc14-ea76fa47458f",
+                            CreatedOn = new DateTime(2021, 8, 8, 10, 36, 17, 703, DateTimeKind.Utc).AddTicks(5995),
                             Email = "phreslip@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -735,10 +762,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLIP@MAIL.COM",
                             NormalizedUserName = "PHRESLIP@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ0dLJUlMlh7eSAxIbOZd4C/3QRi4HsqB4PlQQMFKxY+1Anco1BTBVG6MqOOzkYUvg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPaIYfM1AvxH1a19OKIXETw8V0o77ipTV0mtw/+A5JWJ+rd4mgfgF8D7Ex7j7MoKnQ==",
                             PhoneNumber = "0812868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "399cea30-37b0-4705-b944-0d8fdbf2bc78",
+                            SecurityStamp = "838e3f68-68e4-4cf2-94ec-ab815b5be19a",
                             TwoFactorEnabled = false,
                             UserName = "phreslip@mail.com"
                         });
@@ -793,6 +820,13 @@ namespace SofiaTeachersOnline.Database.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SofiaTeachersOnline.Database.Models.AppUser", b =>
+                {
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
+                        .WithMany()
+                        .HasForeignKey("ModifiedByUserId");
                 });
 
             modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Course", b =>
@@ -856,6 +890,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
+                        .WithMany()
+                        .HasForeignKey("ModifiedByUserId");
+
                     b.HasOne("SofiaTeachersOnline.Database.Models.Student", "Student")
                         .WithMany("Grades")
                         .HasForeignKey("StudentId")
@@ -871,6 +909,10 @@ namespace SofiaTeachersOnline.Database.Migrations
 
             modelBuilder.Entity("SofiaTeachersOnline.Database.Models.Notebook", b =>
                 {
+                    b.HasOne("SofiaTeachersOnline.Database.Models.AppUser", "ModifiedByUser")
+                        .WithMany()
+                        .HasForeignKey("ModifiedByUserId");
+
                     b.HasOne("SofiaTeachersOnline.Database.Models.Student", "Student")
                         .WithOne("Notebook")
                         .HasForeignKey("SofiaTeachersOnline.Database.Models.Notebook", "StudentId")

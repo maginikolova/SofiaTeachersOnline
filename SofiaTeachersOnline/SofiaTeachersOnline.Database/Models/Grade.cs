@@ -1,10 +1,11 @@
 ﻿using SofiaTeachersOnline.Database.Models.Abstracts;
+using SofiaTeachersOnline.Database.Models.Contracts;
 using SofiaTeachersOnline.Database.Models.Enums;
 using System;
 
 namespace SofiaTeachersOnline.Database.Models
 {
-    public class Grade : Entity
+    public class Grade : Entity, IModifiable
     {
         public Mark Mark { get; set; }
 
@@ -14,5 +15,9 @@ namespace SofiaTeachersOnline.Database.Models
         public Student Student { get; set; }
         public int ExerciseId { get; set; }
         public Exercise Exercise { get; set; }
+        
+        public DateTime? ModifiedOn { get; set; }
+        public Guid? ModifiedByUserId { get; set; }
+        public AppUser ModifiedByUser { get; set; }
     }
 }

@@ -1,16 +1,15 @@
-﻿using SofiaTeachersOnline.Database.Models.Abstracts;
-using SofiaTeachersOnline.Database.Models.Contracts;
+﻿using SofiaTeachersOnline.Database.Models;
 using System;
 using System.Collections.Generic;
 
-namespace SofiaTeachersOnline.Database.Models
+namespace SofiaTeachersOnline.Services.DTOs
 {
-    public class Exercise : Entity, IModifiable
+    public class ExerciseDTO
     {
         public string Content { get; set; }
 
         public int CourseId { get; set; }
-        public Course Course { get; set; }
+        public Course Course { get; set; }  // TODO: Add CourseName here instead of Course?
         public ICollection<Grade> Grades { get; set; }
 
         public DateTime? ModifiedOn { get; set; }

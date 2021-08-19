@@ -1,14 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Database.Models.Abstracts;
+using SofiaTeachersOnline.Database.Models.Contracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
 using System;
 using System.Threading.Tasks;
 
-namespace SofiaTeachersOnline.Api.Controllers
+namespace SofiaTeachersOnline.Api.Controllers.Abstracts
 {
     // TODO: TEST THIS REEEEALLY CAREFULLY!!
+    // TODO: Maybe separate it into ModifiableEntityControler, which inherits EntityController, but has UpdateEntity()
+    [ApiController] // TODO: Find out how to add [ApiController] to the whole assembly?
+    [Route("[controller]")]
     public abstract class EntityController<TEntity, TEntityDTO> : ControllerBase
-        where TEntity : Entity  // TODO: Will it work with AppUser?
+        where TEntity : Entity, IModifiable  // TODO: Will it work with AppUser?
         where TEntityDTO : class
     {
         private readonly IEntityService<TEntity, TEntityDTO> _entityService;
@@ -46,7 +52,7 @@ namespace SofiaTeachersOnline.Api.Controllers
         public async Task<IActionResult> Update(int id, TEntity entityDTO)     // TODO: Or should it be named Put?     // TODO: Doesn't need [FromBody]?
         {
             entityDTO.Id = id;  // TODO: Move to the services
-            var entity = await _entityService.UpdateEntityAsync(id, entityDTO);
+            var entity = await _entityService.UpdateEntityAsync(id, entityDTO, this.User);
 
             return Ok(entity);    // Should it return an entity?
         }

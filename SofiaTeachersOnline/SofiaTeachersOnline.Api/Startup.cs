@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
@@ -26,8 +28,19 @@ namespace SofiaTeachersOnline.Api
         {
             services.AddControllers();
 
+            // TODO: Move this in extension class?
+            services.AddScoped<IEntityService<Course, CourseDTO>, CourseService>();
+            //services.AddScoped<IEntityService<CourseProgress, CourseProgressDTO>, CourseProgressService>();
+            services.AddScoped<IEntityService<Exercise, ExerciseDTO>, ExerciseService>();
             services.AddScoped<IEntityService<Grade, GradeDTO>, GradeService>();
             services.AddScoped<IWannaBeUserService, WannaBeUserService>();
+
+
+            // NOTE: This is for the UserManager  TODO: Fix the modifiedBy
+            //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Or you can also register as follows
+            //services.AddHttpContextAccessor();
+
 
             services.AddDbContext<SofiaTeachersOnlineDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("InitialCS")));

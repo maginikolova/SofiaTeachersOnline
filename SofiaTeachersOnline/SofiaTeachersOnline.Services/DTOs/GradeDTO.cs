@@ -12,11 +12,13 @@ namespace SofiaTeachersOnline.Services.DTOs
         public Guid TeacherId { get; set; }
         public string TeacherFirstName { get; set; }
         public string TeacherLastName { get; set; }
+        // TODO: ProfilePic?
 
         //students
         public Guid StudentId { get; set; }
         public string StudentFirstName { get; set; }
         public string StudentLastName { get; set; }
+        // TODO: ProfilePic?
 
         //excercise
         public int ExerciseId { get; set; }

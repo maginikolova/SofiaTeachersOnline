@@ -9,5 +9,6 @@ namespace SofiaTeachersOnline.Database.Models
         public Student GivenBy { get; set; }
         public Guid GivenToId { get; set; }
         public Teacher GivenTo { get; set; }
+        // TODO: Rating/Review for a course as well?
     }
 }

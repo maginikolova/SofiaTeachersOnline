@@ -93,14 +93,14 @@ namespace SofiaTeachersOnline.Database.Seeder
                     Id = 1,
                     StudentId = Guid.Parse("1d6e3bae-451f-4201-8b43-cecc2d404270"),
                     CourseId = 1,
-                    Progress = 10.0
+                    Progress = 10.0f
                 },
                 new CourseProgress
                 {
                     Id = 2,
                     StudentId = Guid.Parse("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"),
                     CourseId = 2,
-                    Progress = 20.0
+                    Progress = 20.0f
                 }
             };
             builder.Entity<CourseProgress>().HasData(courseProgresses);
