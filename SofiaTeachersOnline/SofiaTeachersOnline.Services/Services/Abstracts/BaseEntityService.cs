@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using SofiaTeachersOnline.Database;
-using SofiaTeachersOnline.Database.Models;
+﻿using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Database.Models.Contracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
@@ -13,7 +11,7 @@ using System.Threading.Tasks;
 namespace SofiaTeachersOnline.Services.Services.Abstracts
 {
     // TODO: Maybe separate it into ModifiableEntityService, which inherits EntityService, but has UpdateEntity()
-    public abstract class EntityService<TEntity, TEntityDTO> : IEntityService<TEntity, TEntityDTO>
+    public abstract class BaseEntityService<TEntity, TEntityDTO> : IEntityService<TEntity, TEntityDTO>
         where TEntity : Entity, IModifiable
         where TEntityDTO : class
     {
@@ -21,7 +19,7 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
         protected SofiaTeachersOnlineDbContext _dbContext;
         //private readonly UserManager<AppUser> _userManager;
 
-        protected EntityService(SofiaTeachersOnlineDbContext dbContext/*, UserManager<AppUser> userManager*/)
+        protected BaseEntityService(SofiaTeachersOnlineDbContext dbContext/*, UserManager<AppUser> userManager*/)
         {
             this._dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             //this._userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));

@@ -4,9 +4,9 @@ using SofiaTeachersOnline.Database.Models;
 
 namespace SofiaTeachersOnline.Database.DataConfigurations
 {
-    public class AppUserConfig : IEntityTypeConfiguration<AppUser>
+    public class VideoConfig : IEntityTypeConfiguration<Video>
     {
-        public void Configure(EntityTypeBuilder<AppUser> builder)
+        public void Configure(EntityTypeBuilder<Video> builder)
         {
             builder.HasQueryFilter(x => !x.IsDeleted);
         }

@@ -5,7 +5,7 @@ using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Api.Controllers
 {
-    public class ExerciseController : EntityController<Exercise, ExerciseDTO>
+    public class ExerciseController : BaseEntityController<Exercise, ExerciseDTO>
     {
         public ExerciseController(IEntityService<Exercise, ExerciseDTO> entityService)
             : base(entityService)

@@ -1,5 +1,3 @@
-using System;
-
 namespace SofiaTeachersOnline.Web.Models
 {
     public class ErrorViewModel

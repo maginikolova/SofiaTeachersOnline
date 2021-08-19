@@ -5,10 +5,9 @@ using SofiaTeachersOnline.Services.Services.Abstracts;
 
 namespace SofiaTeachersOnline.Services.Services
 {
-    // TODO: Exercise service
-    public class ExerciseService : BaseEntityService<Exercise, ExerciseDTO>
+    public class VideoService : BaseEntityService<Video, VideoDTO>
     {
-        public ExerciseService(SofiaTeachersOnlineDbContext dbContext) 
+        public VideoService(SofiaTeachersOnlineDbContext dbContext) 
             : base(dbContext)
         {
         }

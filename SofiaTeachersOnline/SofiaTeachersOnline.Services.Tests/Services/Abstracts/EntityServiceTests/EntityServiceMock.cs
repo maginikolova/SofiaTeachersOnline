@@ -5,7 +5,7 @@ using SofiaTeachersOnline.Services.Services.Abstracts;
 
 namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTests
 {
-    public class EntityServiceMock : EntityService<Grade, GradeDTO>
+    public class EntityServiceMock : BaseEntityService<Grade, GradeDTO>
     {
         public EntityServiceMock(SofiaTeachersOnlineDbContext dbContext/*, IMapper mapper*/)
             : base(dbContext)

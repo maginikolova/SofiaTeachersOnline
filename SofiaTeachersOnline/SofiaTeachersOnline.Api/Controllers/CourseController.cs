@@ -5,7 +5,7 @@ using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Api.Controllers
 {
-    public class CourseController : EntityController<Course, CourseDTO>
+    public class CourseController : BaseEntityController<Course, CourseDTO>
     {
         public CourseController(IEntityService<Course, CourseDTO> entityService)
             : base(entityService)

@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
@@ -30,9 +28,10 @@ namespace SofiaTeachersOnline.Api
 
             // TODO: Move this in extension class?
             services.AddScoped<IEntityService<Course, CourseDTO>, CourseService>();
-            //services.AddScoped<IEntityService<CourseProgress, CourseProgressDTO>, CourseProgressService>();
             services.AddScoped<IEntityService<Exercise, ExerciseDTO>, ExerciseService>();
             services.AddScoped<IEntityService<Grade, GradeDTO>, GradeService>();
+            services.AddScoped<IEntityService<Video, VideoDTO>, VideoService>();
+            //services.AddScoped<IEntityService<CourseProgress, CourseProgressDTO>, CourseProgressService>();
             services.AddScoped<IWannaBeUserService, WannaBeUserService>();
 
 

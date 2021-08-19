@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using SofiaTeachersOnline.Database.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Database.Models.Contracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
@@ -13,13 +11,13 @@ namespace SofiaTeachersOnline.Api.Controllers.Abstracts
     // TODO: Maybe separate it into ModifiableEntityControler, which inherits EntityController, but has UpdateEntity()
     [ApiController] // TODO: Find out how to add [ApiController] to the whole assembly?
     [Route("[controller]")]
-    public abstract class EntityController<TEntity, TEntityDTO> : ControllerBase
+    public abstract class BaseEntityController<TEntity, TEntityDTO> : ControllerBase
         where TEntity : Entity, IModifiable  // TODO: Will it work with AppUser?
         where TEntityDTO : class
     {
         private readonly IEntityService<TEntity, TEntityDTO> _entityService;
 
-        public EntityController(IEntityService<TEntity, TEntityDTO> entityService)
+        public BaseEntityController(IEntityService<TEntity, TEntityDTO> entityService)
         {
             this._entityService = entityService ?? throw new ArgumentNullException(nameof(entityService));
         }

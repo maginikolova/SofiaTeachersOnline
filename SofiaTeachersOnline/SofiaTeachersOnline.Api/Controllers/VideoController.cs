@@ -5,9 +5,9 @@ using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Api.Controllers
 {
-    public class GradeController : BaseEntityController<Grade, GradeDTO>
+    public class VideoController : BaseEntityController<Video, VideoDTO>
     {
-        public GradeController(IEntityService<Grade, GradeDTO> gradeService)
+        public VideoController(IEntityService<Video, VideoDTO> gradeService)
             : base(gradeService)
         {
         }

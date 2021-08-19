@@ -6,7 +6,7 @@ using SofiaTeachersOnline.Services.Services.Abstracts;
 namespace SofiaTeachersOnline.Services.Services
 {
     // TODO: CoureService
-    public class CourseService : EntityService<Course, CourseDTO>
+    public class CourseService : BaseEntityService<Course, CourseDTO>
     {
         public CourseService(SofiaTeachersOnlineDbContext dbContext)
             : base(dbContext)

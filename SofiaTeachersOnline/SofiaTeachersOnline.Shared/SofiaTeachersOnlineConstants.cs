@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SofiaTeachersOnline.Shared
+﻿namespace SofiaTeachersOnline.Shared
 {
     public static class SofiaTeachersOnlineConstants
     {
