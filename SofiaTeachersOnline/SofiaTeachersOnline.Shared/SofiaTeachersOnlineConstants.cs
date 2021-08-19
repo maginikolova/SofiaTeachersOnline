@@ -1,5 +1,6 @@
 ﻿namespace SofiaTeachersOnline.Shared
 {
+    // QUESTION: Should this be resourses file?
     public static class SofiaTeachersOnlineConstants
     {
         public static class ExceptionMessages

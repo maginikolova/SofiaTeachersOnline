@@ -1,15 +1,16 @@
 ﻿using NUnit.Framework;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Database.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTests
+namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServiceTests
 {
     [TestFixture]
-    public class DeleteEntityAsync_Should
+    public class UpdateEntityAsync_Should
     {
         private IEnumerable<Grade> _entities;
         private SofiaTeachersOnlineDbContext _dbContext;
@@ -21,33 +22,45 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTes
             this._dbContext = new SofiaTeachersOnlineDbContext(options);
 
             this._entities = Utils.GetGrades();
+
             await this._dbContext.Grades.AddRangeAsync(this._entities);
             await this._dbContext.SaveChangesAsync();
         }
 
         [Test]
-        public async Task DeleteEntityWhen_ValidParams()
+        public async Task UpdateEntityWhen_ValidParams()
         {
             // Arrange
             var entityServiceMock = new EntityServiceMock(this._dbContext);
-            var toBeDeletedId = this._entities.First().Id;
-        
+            var toBeUpdatedId = this._entities.First().Id;
+            var expected = new Grade
+            {
+                Id = toBeUpdatedId,
+                StudentId = Guid.NewGuid(),
+                TeacherId = Guid.NewGuid(),
+                ExerciseId = 1,
+                Mark = Mark.B
+            };
+
             // Act
-            await entityServiceMock.DeleteEntityAsync(toBeDeletedId);
-        
+            var result = await entityServiceMock.UpdateEntityAsync(toBeUpdatedId, expected, null);
+
             // Assert
-            Assert.AreEqual(_dbContext.Grades.Count(), 1);
-            Assert.IsFalse(_dbContext.Grades.Any(x => x.Id == toBeDeletedId));
+            Assert.AreEqual(toBeUpdatedId, result.Id);
+            Assert.AreEqual(expected.TeacherId, result.TeacherId);
+            Assert.AreEqual(expected.StudentId, result.StudentId);
+            Assert.AreEqual(expected.ExerciseId, result.ExerciseId);
         }
-        
+
         [Test]
         public void ThrowWhen_EntityIsNull()
         {
             // Arrange
             var entityServiceMock = new EntityServiceMock(this._dbContext);
-        
+            var toBeUpdatedId = this._entities.First().Id;
+
             // Act & Assert
-            Assert.ThrowsAsync<ArgumentException>(() => entityServiceMock.DeleteEntityAsync(-1));   // TODO: Crete a NotFoundException?
+            Assert.ThrowsAsync<ArgumentNullException>(() => entityServiceMock.UpdateEntityAsync(toBeUpdatedId, null, null));
         }
     }
 }

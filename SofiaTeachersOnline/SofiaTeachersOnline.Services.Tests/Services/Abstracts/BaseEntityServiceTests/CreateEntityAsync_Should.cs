@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTests
+namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServiceTests
 {
     // NOTE: [TextFixture] attrinute is actually not really needed
     // https://docs.nunit.org/articles/nunit/writing-tests/attributes/testfixture.html

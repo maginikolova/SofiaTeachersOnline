@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.EntityServiceTests
+namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServiceTests
 {
     [TestFixture]
     public class GetAllEntities_Should
