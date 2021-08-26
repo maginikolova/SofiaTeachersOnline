@@ -73,7 +73,7 @@
 
 
 	(function init() {
-	  function getTimeRemaining(endtime) {
+	  function getTimeRemaining(endtime) {	// NOTE: Change days counter here!
 	    var t = Date.parse(endtime) - Date.parse(new Date());
 	    var seconds = Math.floor((t / 1000) % 60);
 	    var minutes = Math.floor((t / 1000 / 60) % 60);

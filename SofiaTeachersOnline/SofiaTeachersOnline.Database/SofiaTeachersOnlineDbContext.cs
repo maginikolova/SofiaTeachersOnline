@@ -22,10 +22,10 @@ namespace SofiaTeachersOnline.Database
         //public DbSet<Message> Messages { get; set; }
         public DbSet<Notebook> Notebooks { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        public DbSet<SalesAgent> SalesAgents { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<SuperUser> SuperUsers { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
+        //public DbSet<SalesAgent> SalesAgents { get; set; }
+        //public DbSet<Student> Students { get; set; }
+        //public DbSet<SuperUser> SuperUsers { get; set; }
+        //public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

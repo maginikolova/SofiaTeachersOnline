@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Database.Models
 {
+    // QUESTION: Should it be abstract?
     public class AppUser : IdentityUser<Guid>, IUserBase, IEntity, IModifiable
     {
         public string FirstName { get; set; }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
+using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Services.Services;
 using SofiaTeachersOnline.Services.Services.Contracts;
 
@@ -28,6 +29,15 @@ namespace SofiaTeachersOnline.Web
 
             services.AddDbContext<SofiaTeachersOnlineDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("InitialCS")));
+
+            //services.AddIdentity<AppUser, AppRole>(options =>
+            //{
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequiredUniqueChars = 0;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //})
+            //.AddEntityFrameworkStores<SofiaTeachersOnlineDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
