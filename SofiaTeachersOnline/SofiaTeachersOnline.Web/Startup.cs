@@ -27,17 +27,20 @@ namespace SofiaTeachersOnline.Web
 
             services.AddScoped<IWannaBeUserService, WannaBeUserService>();
 
+            // Set database connection from application json file
             services.AddDbContext<SofiaTeachersOnlineDbContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("InitialCS")));
+                (options => options.UseSqlServer(Configuration.GetConnectionString("InitialCS")));  // TODO: Fix name InitialCS
 
-            //services.AddIdentity<AppUser, AppRole>(options =>
-            //{
-            //    options.Password.RequireDigit = false;
-            //    options.Password.RequiredUniqueChars = 0;
-            //    options.Password.RequireUppercase = false;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //})
-            //.AddEntityFrameworkStores<SofiaTeachersOnlineDbContext>();
+            // Add Identity
+            // If this doesn't exit then "No service for type 'Microsoft.AspNetCore.Identity.UserManager' has been registered" error will appear
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequireDigit = false;  // TODO: Modify to identity options
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddEntityFrameworkStores<SofiaTeachersOnlineDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
