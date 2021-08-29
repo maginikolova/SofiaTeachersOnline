@@ -21,21 +21,11 @@ namespace SofiaTeachersOnline.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*            services.AddDbContext<ApplicationDbContext>(options =>
-                            options.UseSqlServer(
-                                Configuration.GetConnectionString("DefaultConnection")));*/
-
-            /*            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                            .AddEntityFrameworkStores<ApplicationDbContext>();*/
-
-
-
-
-            // Set database connection from application json file
+            // NOTE: Set database connection from application json file
             services.AddDbContext<SofiaTeachersOnlineDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));  // TODO: Fix name InitialCS
 
-            // Add Identity
+            // NOTE: Add Identity
             // If this doesn't exit then "No service for type 'Microsoft.AspNetCore.Identity.UserManager' has been registered" error will appear
             services.AddIdentity<AppUser, AppRole>(options =>
             {
@@ -62,7 +52,7 @@ namespace SofiaTeachersOnline.Web
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // NOTE: The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -71,7 +61,8 @@ namespace SofiaTeachersOnline.Web
 
             app.UseRouting();
 
-            //app.UseAuthentication(); // TODO: What is it?
+            // NOTE: Authentication is needed for login. Otherwise it won't save the ClaimsPrincipal on login
+            app.UseAuthentication(); 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
