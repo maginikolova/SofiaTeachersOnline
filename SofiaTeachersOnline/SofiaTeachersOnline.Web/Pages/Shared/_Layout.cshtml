@@ -6,45 +6,96 @@
     <title>@ViewData["Title"] - SofiaTeachersOnline.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/css/gradschooltemplate/my-style.css">
+    <link rel="stylesheet" href="~/css/gradschooltemplate/fontawesome.css">
+    <link rel="stylesheet" href="~/css/gradschooltemplate/templatemo-grad-school.css">
+    <link rel="stylesheet" href="~/css/gradschooltemplate/owl.css">
+    <link rel="stylesheet" href="~/css/gradschooltemplate/lightbox.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">SofiaTeachersOnline.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - SofiaTeachersOnline.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+    <partial name="_Header" />
+
+    <!--<div class="container">-->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    <!--</div>-->
+
+    <partial name="_Footer" />
+
+    @*    <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - SofiaTeachersOnline.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Additional JS Files -->
+    <script src="~/js/gradschooltemplate/isotope.min.js"></script>
+    <script src="~/js/gradschooltemplate/owl-carousel.js"></script>
+    <script src="~/js/gradschooltemplate/lightbox.js"></script>
+    <script src="~/js/gradschooltemplate/tabs.js"></script>
+    <script src="~/js/gradschooltemplate/video.js"></script>
+    <script src="~/js/gradschooltemplate/slick-slider.js"></script>
+    <script src="~/js/gradschooltemplate/custom.js"></script>
+
+@*    // TODO: If this is uncommented the LOGIN/REGISTER buttons dont work!!!!
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                    scrollTop: reqSectionPos
+                },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var
+                    $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var
+                        currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                        siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+            if ($(e.target).hasClass('external')) {
+                return;
+            }
+            e.preventDefault();
+            $('#menu').removeClass('active');
+            showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+            checkSection();
+        });
+    </script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

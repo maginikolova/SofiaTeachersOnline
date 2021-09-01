@@ -1,0 +1,79 @@
+﻿@*@page
+    @model SofiaTeachersOnline.Web.Pages.Shared._HeaderModel
+    @{
+    }
+*@
+
+<!--header-->
+<header class="main-header clearfix" role="header">
+    <div class="logo">
+        <a asp-area="" asp-page="/Index"><em>Sofia</em>Teachers</a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+        <ul class="main-menu">
+            <li><a asp-area="" asp-page="/Index">Home</a></li>
+            <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
+            <li class="has-submenu">
+                <a href="#section2">Courses</a>
+                <ul class="sub-menu">
+                    <li><a href="#section2">Bulgarian</a></li>
+                    <li><a href="#section3">English</a></li>
+                </ul>
+            </li>
+            <li><a href="#section6">Contacts</a></li>
+            <partial name="_LoginPartial" />
+        </ul>
+    </nav>
+
+    <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">SofiaTeachersOnline.Web</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial" />
+                <ul class="navbar-nav flex-grow-1">
+                    <li><a asp-area="" asp-page="/Index">Home</a></li>
+                    <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>-->
+    @*                    <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+        </li>*@
+    <!--</ul>
+            </div>
+        </div>
+    </nav>-->
+
+</header>
+
+
+<!--Original Template Header-->
+<!--<header class="main-header clearfix" role="header">
+    <div class="logo">
+        <a href="#"><em>Grad</em> School</a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+        <ul class="main-menu">
+            <li><a href="#section1">Home</a></li>
+            <li class="has-submenu">
+                <a href="#section2">About Us</a>
+                <ul class="sub-menu">
+                    <li><a href="#section2">Who we are?</a></li>
+                    <li><a href="#section3">What we do?</a></li>
+                    <li><a href="#section3">How it works?</a></li>
+                    <li><a href="https://templatemo.com/about" rel="sponsored" class="external">External URL</a></li>
+                </ul>
+            </li>
+            <li><a href="#section4">Courses</a></li>-->
+            <!-- <li><a href="#section5">Video</a></li> -->
+            <!--<li><a href="#section6">Contact</a></li>
+            <li><a href="https://templatemo.com" class="external">External</a></li>
+        </ul>
+    </nav>
+</header>-->

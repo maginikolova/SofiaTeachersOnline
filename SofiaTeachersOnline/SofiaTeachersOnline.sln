@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SofiaTeachersOnline.Shared"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SofiaTeachersOnline.Services.Tests", "SofiaTeachersOnline.Services.Tests\SofiaTeachersOnline.Services.Tests.csproj", "{2B8A5026-7B19-4920-BB7D-36231B0BB9DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofiaTeachersOnline.Web", "SofiaTeachersOnline.Web\SofiaTeachersOnline.Web.csproj", "{05D2C954-05BD-4111-94F0-CF2DE50DDCC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SofiaTeachersOnline.Web", "SofiaTeachersOnline.Web\SofiaTeachersOnline.Web.csproj", "{05D2C954-05BD-4111-94F0-CF2DE50DDCC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

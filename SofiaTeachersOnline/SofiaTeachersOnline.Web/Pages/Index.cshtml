@@ -4,7 +4,228 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+    <video autoplay muted loop id="bg-video">
+        <source src="~/img/course-video.mp4" type="video/mp4" />
+    </video>
+
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>Онлайн курс</h6>
+            <h2><em>10</em>-те най-чести грешки в английския</h2>
+            <div class="main-button">
+                <div class="scroll-to-section"><a href="#section3">Заяви интерес</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Main Banner Area End ***** -->
+<!-- ***** Feature Boxes Start ***** -->
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                <div class="features-post">
+                    <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-pencil"></i>Ефективен</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>Повече от 10 години изследвания в чуждоезиковото обучение.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="features-post second-features">
+                    <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-graduation-cap"></i>Достъпен</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>70 % отстъпка за първите 1000 души в България.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="features-post third-features">
+                    <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-book"></i>Полезен</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>Попълва най-честите пропуски на българите в английския език.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Feature Boxes End ***** -->
+
+<section class="section why-us" data-section="section2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Какво представлява курсът?</h2>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id='tabs'>
+                    <ul>
+                        <li><a href='#tabs-1'>История</a></li>
+                        <li><a href='#tabs-2'>Структура</a></li>
+                        <li><a href='#tabs-3'>Насоченост</a></li>
+                    </ul>
+                    <section class='tabs-content'>
+                        <article id='tabs-1'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="img/choose-us-image-01.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>История</h4>
+                                    <p>
+                                        За пръв път в България! Курсът е създаден в колаборация между американски, английски и български преподаватели след повече от 10 години изследвания
+                                        в областта на чуждоезиковото обучение. Тестван е с хиляди ученици от цял свят и е пригоден към спецификите и на българския език.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article id='tabs-2'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="img/choose-us-image-02.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Структура</h4>
+                                    <p>
+                                        Минава през 10-те най-чести грешки в английския език и гарантирано попълва пропуските на 90% от говорещите на английски като чужд език.
+                                        Всеки раздел разглежда една от тях и се състои от кратък видео урок и упражнения, в които да приложим знанията и уменията си.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article id='tabs-3'>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="img/choose-us-image-03.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Насоченост</h4>
+                                    <p>
+                                        Подходящ е за всеки, който желае да попълни своите пропуски и да се усъвършенства. Курсът е достъпен със 70% отстъпка за първите 1000 души, които
+                                        заявят интерес.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section coming-soon" data-section="section3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-xs-12">
+                <div class="continer centerIt">
+                    <div>
+                        <h4>До курса остават:</h4>
+                        <div class="counter">
+
+                            <div class="days">
+                                <div class="value">00</div>
+                                <span>Дни</span>
+                            </div>
+
+                            <div class="hours">
+                                <div class="value">00</div>
+                                <span>Часа</span>
+                            </div>
+
+                            <div class="minutes">
+                                <div class="value">00</div>
+                                <span>Минути</span>
+                            </div>
+
+                            <div class="seconds">
+                                <div class="value">00</div>
+                                <span>Секунди</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="right-content">
+                    <div class="top-content">
+                        <h6>Регистрирай се безплатно, за да <em>получиш известие</em>, когато курсът стане активен</h6>
+                    </div>
+                    <form id="contact" action="" method="get">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="first-name" type="text" class="form-control" id="first-name" placeholder="Име" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="last-name" type="text" class="form-control" id="last-name" placeholder="Фамилия" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="email" type="text" class="form-control" id="email" placeholder="Email" pattern="[^@@ \t\r\n]+@@[^@@ \t\r\n]+\.[^@@ \t\r\n]+" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="phone-number" type="text" class="form-control" id="phone-number" placeholder="Телефон" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="button">Заяви интерес</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#form-submit").click(function () {
+        console.log("CLICKED!!");
+        $.ajax({
+            type: "POST",
+            url: "http://sofiateachers-001-site1.gtempurl.com/SofiaTeachersOnline/wannabeuser",
+            contentType: "application/json",
+            data: JSON.stringify({ "FirstName": $('#first-name').val(), "LastName": $('#last-name').val(), "email": $('#email').val(), "PhoneNr": $('#phone-number').val() }),
+            success: function (response) {
+                console.log("SUCCESS")
+                //if request if made successfully then the response represent the data
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log("FAIL");
+                console.log(errorThrown);
+            }
+
+        });
+    });
+</script>
