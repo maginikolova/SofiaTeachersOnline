@@ -8,23 +8,30 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a></li>
-    <li>
-        @*TODO: Fix the Logout button*@
-        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-            <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
-        </form>
+    <li class="has-submenu">
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+        <ul class="sub-menu">
+            <li><a href="#section2">Моите Курсове</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Настройки</a></li>
+            <li>
+                @*TODO: Fix the Logout button*@
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-white">Изход</button>
+                </form>
+            </li>
+        </ul>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
     </li>
     <li class="nav-item">
-        <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
     </li>
 }
+
 
 <!--Original MVC Login/Register-->
 @*<ul class="navbar-nav">

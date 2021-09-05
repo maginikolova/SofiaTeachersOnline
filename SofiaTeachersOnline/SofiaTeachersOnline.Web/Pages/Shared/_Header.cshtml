@@ -12,16 +12,17 @@
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu">
-            <li><a asp-area="" asp-page="/Index">Home</a></li>
-            <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
+            @*<li><a asp-area="" asp-page="/Index">Home</a></li>
+        <li><a asp-area="" asp-page="/Privacy">Privacy</a></li> TODO: Put Privacy policy in*@
             <li class="has-submenu">
-                <a href="#section2">Courses</a>
+                <a href="#section2">Курсове</a>
                 <ul class="sub-menu">
-                    <li><a href="#section2">Bulgarian</a></li>
-                    <li><a href="#section3">English</a></li>
+                    <li><a href="#section2">Български</a></li>
+                    <li><a href="#section3">Английски</a></li>
                 </ul>
             </li>
-            <li><a href="#section6">Contacts</a></li>
+            @*<li><a href="#section6">Contacts</a></li>*@
+            <li><a href="#section6">Език</a></li>    @*TODO: Make an icon*@
             <partial name="_LoginPartial" />
         </ul>
     </nav>
