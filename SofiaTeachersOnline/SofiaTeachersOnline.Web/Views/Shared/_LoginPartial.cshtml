@@ -1,5 +1,5 @@
 ﻿@*@using Microsoft.AspNetCore.Identity*@
-@using SofiaTeachersOnline.Database.Models
+@using SofiaTeachersOnline.Database.Models;
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
@@ -18,17 +18,17 @@
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                     <button type="submit" class="nav-link btn btn-link text-white">Изход</button>
                 </form>
-            </li>
+            </li>+
         </ul>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+        <a class="external" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
     </li>
     <li class="nav-item">
-        <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+        <a class="external" asp-area="Identity" asp-page="/Account/Login">Вход</a>
     </li>
 }
 

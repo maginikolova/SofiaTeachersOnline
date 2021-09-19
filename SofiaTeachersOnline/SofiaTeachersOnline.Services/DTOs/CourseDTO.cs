@@ -6,7 +6,7 @@ namespace SofiaTeachersOnline.Services.DTOs
 {
     public class CourseDTO
     {
-        // TODO: string Name?
+        public string Title { get; set; }
 
         public Guid TeacherId { get; set; }
         public Teacher Teacher { get; set; }

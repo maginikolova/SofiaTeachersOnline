@@ -300,16 +300,42 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(829),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(3775),
                             IsDeleted = false,
-                            TeacherId = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845")
+                            TeacherId = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"),
+                            Title = "10-те най-чести грешки в английския"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(1573),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5915),
                             IsDeleted = false,
-                            TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
+                            TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
+                            Title = "Общ английски"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5969),
+                            IsDeleted = false,
+                            TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
+                            Title = "Бизнес Английски"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5974),
+                            IsDeleted = false,
+                            TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
+                            Title = "Подготовка за сертификат"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5978),
+                            IsDeleted = false,
+                            TeacherId = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
+                            Title = "Български за чужденци"
                         });
                 });
 
@@ -351,7 +377,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         {
                             Id = 1,
                             CourseId = 1,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(2385),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(7554),
                             IsDeleted = false,
                             Progress = 10f,
                             StudentId = new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270")
@@ -360,7 +386,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         {
                             Id = 2,
                             CourseId = 2,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(3230),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(9489),
                             IsDeleted = false,
                             Progress = 20f,
                             StudentId = new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845")
@@ -409,7 +435,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 1,
                             Content = "some content",
                             CourseId = 1,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(4083),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(1426),
                             IsDeleted = false
                         },
                         new
@@ -417,7 +443,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = 2,
                             Content = "some content2",
                             CourseId = 2,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(4600),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(2539),
                             IsDeleted = false
                         });
                 });
@@ -492,7 +518,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(5303),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(4050),
                             ExerciseId = 2,
                             IsDeleted = false,
                             Mark = (byte)4,
@@ -502,7 +528,7 @@ namespace SofiaTeachersOnline.Database.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(6514),
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(6153),
                             ExerciseId = 1,
                             IsDeleted = false,
                             Mark = (byte)6,
@@ -674,8 +700,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "3ef15368-30e3-4d9f-b019-2457a1aa15b4",
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 500, DateTimeKind.Utc).AddTicks(8486),
+                            ConcurrencyStamp = "0a468797-7cd9-47f7-8d9e-ec850936dbdd",
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 752, DateTimeKind.Utc).AddTicks(2380),
                             Email = "magi@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -683,10 +709,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGI@MAIL.COM",
                             NormalizedUserName = "MAGI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFu1UeuB4dpyF4hKqxcotL2kjeR5AU2mnwGsCq503ruBHoZRw42wylbUZ2UgSK04vQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGIyz5BJ9FPSnq1R/KeVlS1l6aZu0EP1yLlzwPaax2FcrmxUNIjsMhtzsYl0GrTqjg==",
                             PhoneNumber = "0886868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26f3e478-c1da-48f1-b5cf-0d8d35a5f005",
+                            SecurityStamp = "7dfee30b-3054-44cd-a371-93d1c64a1820",
                             TwoFactorEnabled = false,
                             UserName = "magi@mail.com"
                         },
@@ -695,8 +721,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "e24865e0-3f6a-490f-96dd-eb8904ba6824",
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 501, DateTimeKind.Utc).AddTicks(1253),
+                            ConcurrencyStamp = "b368da8d-6e61-49a4-9137-df70c8fa4c3a",
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 752, DateTimeKind.Utc).AddTicks(8316),
                             Email = "phresli@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -704,10 +730,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLI@MAIL.COM",
                             NormalizedUserName = "PHRESLI@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEI0ux+WqTYnm1Pr+k5S0JbNXeWHqXtiAWhtbMHcGs2Ru84lNW4FULqWeJiK+hw3L4A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEhu0twTtyZO+GGW2VL/BgFvUb7IEAw9OP+cpI1UUm09g5o1oWGbvobHW3m2dvxBCA==",
                             PhoneNumber = "0886868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "58c82d95-f41f-478e-886a-f7208429298b",
+                            SecurityStamp = "c4265f10-9d54-45ee-8d76-0daf7e1e1d19",
                             TwoFactorEnabled = false,
                             UserName = "phresli@mail.com"
                         });
@@ -725,8 +751,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "e70a2c2b-f460-45fa-886e-ecc88bc52348",
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 519, DateTimeKind.Utc).AddTicks(5931),
+                            ConcurrencyStamp = "bda04f93-b5da-44da-aa7d-f35ece39d2c2",
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 787, DateTimeKind.Utc).AddTicks(1450),
                             Email = "magin@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -734,10 +760,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAGINMAIL@MAIL.COM",
                             NormalizedUserName = "MAGIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEyW+7LUrrFDT8SmLQx40qNXBnkFlSPnhwk/wXNgEBZYJHlUy+oYUrQ8THs3ad6l3A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP3NcOUHi+zn4ddlIDQkiRZpwx7AVt523Ln4X89ydCPX8sQD0SbFJkKxgI0J6nh4BQ==",
                             PhoneNumber = "0889868686",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dc046cd7-6711-46e8-aa21-961873bde4f1",
+                            SecurityStamp = "340e9eeb-c26e-4c42-83bc-4215377821af",
                             TwoFactorEnabled = false,
                             UserName = "magin@mail.com"
                         },
@@ -746,8 +772,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                             Id = new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "b2327936-5f90-4b78-a8f0-9bede6d9a4d3",
-                            CreatedOn = new DateTime(2021, 8, 29, 21, 5, 52, 519, DateTimeKind.Utc).AddTicks(6041),
+                            ConcurrencyStamp = "b05ae53b-bd5f-4950-9982-51a6b9e668ac",
+                            CreatedOn = new DateTime(2021, 9, 19, 20, 8, 23, 787, DateTimeKind.Utc).AddTicks(1682),
                             Email = "phreslip@mail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
@@ -755,10 +781,10 @@ namespace SofiaTeachersOnline.Database.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PHRESLIP@MAIL.COM",
                             NormalizedUserName = "PHRESLIP@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEp5gbNXhsrhAyBRrhHz7sV+r8RWCXIq9KeXI4LBQjIfZoJWgvfRWcIqY/OkKC5rHQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFNl24YpIDlRzfsCTJ0rsN64AESvo7WfPmLUvj1X6eP3Fa52By9xg9x7iEfmh+PHPA==",
                             PhoneNumber = "0812868688",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3e75f5ab-980a-4001-8fbc-00e6bc96ec55",
+                            SecurityStamp = "3dcd28fb-5fc6-478a-9c6b-2c8b274769fd",
                             TwoFactorEnabled = false,
                             UserName = "phreslip@mail.com"
                         });

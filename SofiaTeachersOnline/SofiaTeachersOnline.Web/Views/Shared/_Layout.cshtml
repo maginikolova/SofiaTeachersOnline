@@ -45,7 +45,7 @@
     <script src="~/js/gradschooltemplate/slick-slider.js"></script>
     <script src="~/js/gradschooltemplate/custom.js"></script>
 
-@*    // TODO: If this is uncommented the LOGIN/REGISTER buttons dont work!!!!
+    @*// TODO: If this is uncommented the LOGIN/REGISTER buttons dont work!!!!
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
@@ -85,6 +85,8 @@
 
         $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
             if ($(e.target).hasClass('external')) {
+                $('#menu').removeClass('active');
+                $($(e.parentElement).addClass('active'));
                 return;
             }
             e.preventDefault();

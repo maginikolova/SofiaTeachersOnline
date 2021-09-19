@@ -398,8 +398,8 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Discriminator", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LastOnline", "LockoutEnabled", "LockoutEnd", "ModifiedByUserId", "ModifiedOn", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePic", "SecurityStamp", "TwoFactorEnabled", "UserName", "CourseId" },
                 values: new object[,]
                 {
-                    { new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3ef15368-30e3-4d9f-b019-2457a1aa15b4", new DateTime(2021, 8, 29, 21, 5, 52, 500, DateTimeKind.Utc).AddTicks(8486), null, "Student", "magi@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "MAGI@MAIL.COM", "MAGI@MAIL.COM", "AQAAAAEAACcQAAAAEFu1UeuB4dpyF4hKqxcotL2kjeR5AU2mnwGsCq503ruBHoZRw42wylbUZ2UgSK04vQ==", "0886868686", false, null, "26f3e478-c1da-48f1-b5cf-0d8d35a5f005", false, "magi@mail.com", null },
-                    { new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e24865e0-3f6a-490f-96dd-eb8904ba6824", new DateTime(2021, 8, 29, 21, 5, 52, 501, DateTimeKind.Utc).AddTicks(1253), null, "Student", "phresli@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "PHRESLI@MAIL.COM", "PHRESLI@MAIL.COM", "AQAAAAEAACcQAAAAEI0ux+WqTYnm1Pr+k5S0JbNXeWHqXtiAWhtbMHcGs2Ru84lNW4FULqWeJiK+hw3L4A==", "0886868688", false, null, "58c82d95-f41f-478e-886a-f7208429298b", false, "phresli@mail.com", null }
+                    { new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "0a468797-7cd9-47f7-8d9e-ec850936dbdd", new DateTime(2021, 9, 19, 20, 8, 23, 752, DateTimeKind.Utc).AddTicks(2380), null, "Student", "magi@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "MAGI@MAIL.COM", "MAGI@MAIL.COM", "AQAAAAEAACcQAAAAEGIyz5BJ9FPSnq1R/KeVlS1l6aZu0EP1yLlzwPaax2FcrmxUNIjsMhtzsYl0GrTqjg==", "0886868686", false, null, "7dfee30b-3054-44cd-a371-93d1c64a1820", false, "magi@mail.com", null },
+                    { new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b368da8d-6e61-49a4-9137-df70c8fa4c3a", new DateTime(2021, 9, 19, 20, 8, 23, 752, DateTimeKind.Utc).AddTicks(8316), null, "Student", "phresli@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "PHRESLI@MAIL.COM", "PHRESLI@MAIL.COM", "AQAAAAEAACcQAAAAEEhu0twTtyZO+GGW2VL/BgFvUb7IEAw9OP+cpI1UUm09g5o1oWGbvobHW3m2dvxBCA==", "0886868688", false, null, "c4265f10-9d54-45ee-8d76-0daf7e1e1d19", false, "phresli@mail.com", null }
                 });
 
             migrationBuilder.InsertData(
@@ -407,27 +407,29 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Discriminator", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LastOnline", "LockoutEnabled", "LockoutEnd", "ModifiedByUserId", "ModifiedOn", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePic", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e70a2c2b-f460-45fa-886e-ecc88bc52348", new DateTime(2021, 8, 29, 21, 5, 52, 519, DateTimeKind.Utc).AddTicks(5931), null, "Teacher", "magin@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "MAGINMAIL@MAIL.COM", "MAGIN@MAIL.COM", "AQAAAAEAACcQAAAAEEyW+7LUrrFDT8SmLQx40qNXBnkFlSPnhwk/wXNgEBZYJHlUy+oYUrQ8THs3ad6l3A==", "0889868686", false, null, "dc046cd7-6711-46e8-aa21-961873bde4f1", false, "magin@mail.com" },
-                    { new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b2327936-5f90-4b78-a8f0-9bede6d9a4d3", new DateTime(2021, 8, 29, 21, 5, 52, 519, DateTimeKind.Utc).AddTicks(6041), null, "Teacher", "phreslip@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "PHRESLIP@MAIL.COM", "PHRESLIP@MAIL.COM", "AQAAAAEAACcQAAAAEEp5gbNXhsrhAyBRrhHz7sV+r8RWCXIq9KeXI4LBQjIfZoJWgvfRWcIqY/OkKC5rHQ==", "0812868688", false, null, "3e75f5ab-980a-4001-8fbc-00e6bc96ec55", false, "phreslip@mail.com" }
+                    { new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "bda04f93-b5da-44da-aa7d-f35ece39d2c2", new DateTime(2021, 9, 19, 20, 8, 23, 787, DateTimeKind.Utc).AddTicks(1450), null, "Teacher", "magin@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "MAGINMAIL@MAIL.COM", "MAGIN@MAIL.COM", "AQAAAAEAACcQAAAAEP3NcOUHi+zn4ddlIDQkiRZpwx7AVt523Ln4X89ydCPX8sQD0SbFJkKxgI0J6nh4BQ==", "0889868686", false, null, "340e9eeb-c26e-4c42-83bc-4215377821af", false, "magin@mail.com" },
+                    { new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b05ae53b-bd5f-4950-9982-51a6b9e668ac", new DateTime(2021, 9, 19, 20, 8, 23, 787, DateTimeKind.Utc).AddTicks(1682), null, "Teacher", "phreslip@mail.com", false, null, false, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null, null, null, "PHRESLIP@MAIL.COM", "PHRESLIP@MAIL.COM", "AQAAAAEAACcQAAAAEFNl24YpIDlRzfsCTJ0rsN64AESvo7WfPmLUvj1X6eP3Fa52By9xg9x7iEfmh+PHPA==", "0812868688", false, null, "3dcd28fb-5fc6-478a-9c6b-2c8b274769fd", false, "phreslip@mail.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Courses",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId", "Title" },
-                values: new object[] { 1, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(829), null, false, null, null, null, new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), null });
-
-            migrationBuilder.InsertData(
-                table: "Courses",
-                columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId", "Title" },
-                values: new object[] { 2, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(1573), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), null });
+                values: new object[,]
+                {
+                    { 1, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(3775), null, false, null, null, null, new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845"), "10-те най-чести грешки в английския" },
+                    { 2, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5915), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), "Общ английски" },
+                    { 3, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5969), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), "Бизнес Английски" },
+                    { 4, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5974), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), "Подготовка за сертификат" },
+                    { 5, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(5978), null, false, null, null, null, new Guid("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845"), "Български за чужденци" }
+                });
 
             migrationBuilder.InsertData(
                 table: "CourseProgresses",
                 columns: new[] { "Id", "CourseId", "CreatedOn", "DeletedOn", "IsDeleted", "Progress", "StudentId" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(2385), null, false, 10f, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270") },
-                    { 2, 2, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(3230), null, false, 20f, new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845") }
+                    { 1, 1, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(7554), null, false, 10f, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270") },
+                    { 2, 2, new DateTime(2021, 9, 19, 20, 8, 23, 812, DateTimeKind.Utc).AddTicks(9489), null, false, 20f, new Guid("71c88aa4-b6b6-45e8-0ea1-ba1912c1a845") }
                 });
 
             migrationBuilder.InsertData(
@@ -435,19 +437,19 @@ namespace SofiaTeachersOnline.Database.Migrations
                 columns: new[] { "Id", "Content", "CourseId", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedByUserId", "ModifiedOn" },
                 values: new object[,]
                 {
-                    { 1, "some content", 1, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(4083), null, false, null, null },
-                    { 2, "some content2", 2, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(4600), null, false, null, null }
+                    { 1, "some content", 1, new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(1426), null, false, null, null },
+                    { 2, "some content2", 2, new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(2539), null, false, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "ExerciseId", "IsDeleted", "Mark", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId" },
-                values: new object[] { 2, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(6514), null, 1, false, (byte)6, null, null, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 2, new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(6153), null, 1, false, (byte)6, null, null, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CreatedOn", "DeletedOn", "ExerciseId", "IsDeleted", "Mark", "ModifiedByUserId", "ModifiedOn", "StudentId", "TeacherId" },
-                values: new object[] { 1, new DateTime(2021, 8, 29, 21, 5, 52, 535, DateTimeKind.Utc).AddTicks(5303), null, 2, false, (byte)4, null, null, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
+                values: new object[] { 1, new DateTime(2021, 9, 19, 20, 8, 23, 813, DateTimeKind.Utc).AddTicks(4050), null, 2, false, (byte)4, null, null, new Guid("1d6e3bae-451f-4201-8b43-cecc2d404270"), new Guid("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

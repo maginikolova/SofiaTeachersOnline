@@ -75,11 +75,31 @@ namespace SofiaTeachersOnline.Database.Seeder
                 new Course
                 {
                     Id = 1,
+                    Title = "10-те най-чести грешки в английския",
                     TeacherId = Guid.Parse("71c88bb4-b6b6-45e8-9ea1-ba1912c1a845")
                 },
                 new Course
                 {
                     Id = 2,
+                    Title = "Общ английски",
+                    TeacherId = Guid.Parse("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
+                },
+                new Course
+                {
+                    Id = 3,
+                    Title = "Бизнес Английски",
+                    TeacherId = Guid.Parse("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
+                },
+                new Course
+                {
+                    Id = 4,
+                    Title = "Подготовка за сертификат",
+                    TeacherId = Guid.Parse("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
+                },
+                new Course
+                {
+                    Id = 5,
+                    Title = "Български за чужденци",
                     TeacherId = Guid.Parse("71c88cc4-b6b6-45e8-9ea1-ba1912c1a845")
                 }
             };

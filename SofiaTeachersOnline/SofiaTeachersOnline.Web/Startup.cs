@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.Services;
 
 namespace SofiaTeachersOnline.Web
 {
@@ -39,6 +40,9 @@ namespace SofiaTeachersOnline.Web
             .AddEntityFrameworkStores<SofiaTeachersOnlineDbContext>();
 
             services.AddRazorPages();
+
+            // TODO: Extract all the dependency injection into extension methdo
+            services.AddScoped<CourseService>();    // TODO: Checkout AddScoped and register an interface instead of the class itself
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +71,10 @@ namespace SofiaTeachersOnline.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }
