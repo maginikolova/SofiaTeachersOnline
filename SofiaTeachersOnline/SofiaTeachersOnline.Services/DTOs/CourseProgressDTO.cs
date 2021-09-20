@@ -1,5 +1,4 @@
-﻿using SofiaTeachersOnline.Database.Models;
-using System;
+﻿using System;
 
 namespace SofiaTeachersOnline.Services.DTOs
 {
@@ -13,6 +12,6 @@ namespace SofiaTeachersOnline.Services.DTOs
         // TODO: ProfilePic?
 
         public int CourseId { get; set; }
-        public Course Course { get; set; }  // TODO: Add CourseName here instead of Course?
+        public CourseDTO Course { get; set; }  // TODO: Add CourseName here instead of Course?
     }
 }

@@ -9,6 +9,6 @@ namespace SofiaTeachersOnline.Database.Models.Abstracts
         
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public DateTime? DeletedOn { get; set; }   
-        public bool IsDeleted { get; set; }      // TODO: Should isDeleted stay or just DateTime? ?
+        public bool IsDeleted { get; set; }      // TODO: Should isDeleted stay or just DateTime ?
     }
 }

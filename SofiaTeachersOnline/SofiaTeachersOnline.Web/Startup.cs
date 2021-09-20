@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.DTOs;
 using SofiaTeachersOnline.Services.Services;
+using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Web
 {
@@ -42,7 +44,7 @@ namespace SofiaTeachersOnline.Web
             services.AddRazorPages();
 
             // TODO: Extract all the dependency injection into extension methdo
-            services.AddScoped<CourseService>();    // TODO: Checkout AddScoped and register an interface instead of the class itself
+            services.AddScoped<IEntityService<Course, CourseDTO>, CourseService>();            // TODO: Checkout AddScoped
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

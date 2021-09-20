@@ -9,7 +9,7 @@ namespace SofiaTeachersOnline.Services.DTOs
         public string Content { get; set; }
 
         public int CourseId { get; set; }
-        public Course Course { get; set; }  // TODO: Add CourseName here instead of Course?
+        public CourseDTO Course { get; set; }  // TODO: Add CourseName here instead of Course?
         public ICollection<Grade> Grades { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
