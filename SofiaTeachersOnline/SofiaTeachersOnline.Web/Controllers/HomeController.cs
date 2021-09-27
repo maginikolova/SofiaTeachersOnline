@@ -5,16 +5,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.DTOs;
 using SofiaTeachersOnline.Services.Services;
-using SofiaTeachersOnline.Web.Models;
+using SofiaTeachersOnline.Services.Services.Contracts;
 
 namespace SofiaTeachersOnline.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly CourseService courseService;
+        private readonly IEntityService<Course, CourseDTO> courseService;
 
-        public HomeController(CourseService courseService)
+        public HomeController(IEntityService<Course, CourseDTO> courseService)
         {
             this.courseService = courseService;
         }
@@ -22,10 +23,9 @@ namespace SofiaTeachersOnline.Web.Controllers
         // GET: Home
         public async Task<IActionResult> Index()
         {
-            var model = new HomeIndexViewModel();
             //var sofiaTeachersOnlineDbContext = _context.Courses.Include(c => c.ModifiedByUser).Include(c => c.Teacher);
-            model.Courses = courseService.GetAllEntities();
-            return View(model);
+            var courses = courseService.GetAllEntities();
+            return View(courses);
         }
 
         /*// GET: Home/Details/5

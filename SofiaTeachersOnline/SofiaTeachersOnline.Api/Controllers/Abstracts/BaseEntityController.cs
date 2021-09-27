@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Database.Models.Contracts;
+using SofiaTeachersOnline.Services.DTOs.Contracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
 using System;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace SofiaTeachersOnline.Api.Controllers.Abstracts
     [Route("[controller]")]
     public abstract class BaseEntityController<TEntity, TEntityDTO> : ControllerBase
         where TEntity : Entity, IModifiable  // TODO: Will it work with AppUser?
-        where TEntityDTO : class
+        where TEntityDTO : class, IIdentifiable<int>
     {
         private readonly IEntityService<TEntity, TEntityDTO> _entityService;
 
@@ -23,7 +24,7 @@ namespace SofiaTeachersOnline.Api.Controllers.Abstracts
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(TEntity entityDTO)   // TODO: Or should it be named Post?     // TODO: Doesn't need [FromBody]?
+        public async Task<IActionResult> Create(TEntityDTO entityDTO)   // TODO: Or should it be named Post?     // TODO: Doesn't need [FromBody]?
         {
             var result = await _entityService.CreateEntityAsync(entityDTO);
 
@@ -47,7 +48,7 @@ namespace SofiaTeachersOnline.Api.Controllers.Abstracts
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, TEntity entityDTO)     // TODO: Or should it be named Put?     // TODO: Doesn't need [FromBody]?
+        public async Task<IActionResult> Update(int id, TEntityDTO entityDTO)     // TODO: Or should it be named Put?     // TODO: Doesn't need [FromBody]?
         {
             entityDTO.Id = id;  // TODO: Move to the services
             var entity = await _entityService.UpdateEntityAsync(id, entityDTO, this.User);

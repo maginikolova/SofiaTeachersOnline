@@ -1,9 +1,10 @@
 ﻿using SofiaTeachersOnline.Database.Models.Enums;
+using SofiaTeachersOnline.Services.DTOs.Contracts;
 using System;
 
 namespace SofiaTeachersOnline.Services.DTOs
 {
-    public class GradeDTO
+    public class GradeDTO : IIdentifiable<int>
     {
         public int Id { get; set; }
         public Mark Mark { get; set; }

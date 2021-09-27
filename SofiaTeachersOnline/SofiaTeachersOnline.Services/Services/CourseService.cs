@@ -1,4 +1,5 @@
-﻿using SofiaTeachersOnline.Database;
+﻿using AutoMapper;
+using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Services.DTOs;
 using SofiaTeachersOnline.Services.Services.Abstracts;
@@ -8,8 +9,8 @@ namespace SofiaTeachersOnline.Services.Services
     // TODO: CoureService
     public class CourseService : BaseEntityService<Course, CourseDTO>
     {
-        public CourseService(SofiaTeachersOnlineDbContext dbContext)
-            : base(dbContext)
+        public CourseService(SofiaTeachersOnlineDbContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
         }
     }

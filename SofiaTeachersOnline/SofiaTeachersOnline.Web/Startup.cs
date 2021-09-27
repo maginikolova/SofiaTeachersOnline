@@ -6,9 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.AutoMapperConfigs;
 using SofiaTeachersOnline.Services.DTOs;
 using SofiaTeachersOnline.Services.Services;
 using SofiaTeachersOnline.Services.Services.Contracts;
+using System.Reflection;
 
 namespace SofiaTeachersOnline.Web
 {
@@ -24,6 +26,9 @@ namespace SofiaTeachersOnline.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // NOTE: Add AutoMapperService
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(CourseMapperConfig)));
+
             // NOTE: Set database connection from application json file
             services.AddDbContext<SofiaTeachersOnlineDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));  // TODO: Fix name InitialCS
@@ -31,7 +36,7 @@ namespace SofiaTeachersOnline.Web
             // NOTE: Add Identity
             // If this doesn't exit then "No service for type 'Microsoft.AspNetCore.Identity.UserManager' has been registered" error will appear
             services.AddIdentity<AppUser, AppRole>(options =>
-            {
+            {   
                 //options.SignIn.RequireConfirmedAccount = true;    // TODO: Add later
                 options.Password.RequireDigit = false;  // TODO: Modify to identity options
                 options.Password.RequiredUniqueChars = 0;

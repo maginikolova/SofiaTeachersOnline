@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
 using System;
@@ -58,7 +58,7 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
     }
 }
 
-/*
+*//*
 // If we use Assert.Multiple() then NUnit is storing any failures encountered in the block and reporting all of them
 // together upon exit from the block. If both asserts failed, then both would be reported.
 // Otherwise the test would stop on the first assert

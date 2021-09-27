@@ -1,7 +1,10 @@
-﻿namespace SofiaTeachersOnline.Services.DTOs
+﻿using SofiaTeachersOnline.Services.DTOs.Contracts;
+
+namespace SofiaTeachersOnline.Services.DTOs
 {
-    public class VideoDTO
+    public class VideoDTO : IIdentifiable<int>
     {
+        public int Id { get; set; }
         public string Url { get; set; }
 
         public int CourseId { get; set; }

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SofiaTeachersOnline.Services.DTOs.Contracts;
+using System;
 
 namespace SofiaTeachersOnline.Services.DTOs
 {
-    public class CourseProgressDTO
+    public class CourseProgressDTO : IIdentifiable<int>
     {
+        public int Id { get; set; }
         public double Progress { get; set; }
 
         public Guid StudentId { get; set; }

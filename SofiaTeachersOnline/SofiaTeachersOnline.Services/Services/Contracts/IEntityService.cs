@@ -10,10 +10,10 @@ namespace SofiaTeachersOnline.Services.Services.Contracts
         where TEntity : Entity, IModifiable
         where TEntityDTO : class
     {
-        Task<TEntity> CreateEntityAsync(TEntity entityDTO);
-        IQueryable<TEntity> GetAllEntities();
-        Task<TEntity> GetEntityByIdAsync(int entityId);
-        Task<TEntity> UpdateEntityAsync(int id, TEntity entityDTO, ClaimsPrincipal User);
+        Task<TEntityDTO> CreateEntityAsync(TEntityDTO entityDTO);
+        IQueryable<TEntityDTO> GetAllEntities();
+        Task<TEntityDTO> GetEntityByIdAsync(int entityId);
+        Task<TEntityDTO> UpdateEntityAsync(int id, TEntityDTO entityDTO, ClaimsPrincipal User);
         Task DeleteEntityAsync(int entityId);
         
         //Task<TEntity> PatchEntityAsync(int entityId, JsonPatchDocument<TEntity> entityPatch);

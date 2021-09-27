@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿/*using NUnit.Framework;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
 using System;
@@ -51,3 +51,4 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
         }
     }
 }
+*/

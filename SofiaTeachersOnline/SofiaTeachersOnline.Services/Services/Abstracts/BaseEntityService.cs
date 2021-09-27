@@ -1,4 +1,5 @@
-﻿using SofiaTeachersOnline.Database;
+﻿using AutoMapper;
+using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models.Abstracts;
 using SofiaTeachersOnline.Database.Models.Contracts;
 using SofiaTeachersOnline.Services.Services.Contracts;
@@ -17,31 +18,36 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
     {
         //private readonly IMapper _mapper;
         protected SofiaTeachersOnlineDbContext _dbContext;
+        private readonly IMapper _mapper;
+
         //private readonly UserManager<AppUser> _userManager;
 
-        protected BaseEntityService(SofiaTeachersOnlineDbContext dbContext/*, UserManager<AppUser> userManager*/)
+        protected BaseEntityService(SofiaTeachersOnlineDbContext dbContext, IMapper mapper/*, UserManager<AppUser> userManager*/)
         {
             this._dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            this._mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             //this._userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
 
-        public async Task<TEntity> CreateEntityAsync(TEntity entityDTO)
+        public async Task<TEntityDTO> CreateEntityAsync(TEntityDTO entityDTO)
         {
             // TODO: Should we validate if entityDTO is null?
-            this._dbContext.Add(entityDTO);
 
+            var entity = this._mapper.Map<TEntity>(entityDTO);
+
+            this._dbContext.Add(entity);
             await this._dbContext.SaveChangesAsync();
 
             return entityDTO;   // Should we return the DTO or the real entity from the DB?
         }
 
-        public IQueryable<TEntity> GetAllEntities()
-            => this._dbContext.Set<TEntity>().AsQueryable();
+        public IQueryable<TEntityDTO> GetAllEntities()
+            => this._dbContext.Set<TEntity>().Select(x => this._mapper.Map<TEntityDTO>(x));
 
-        public async Task<TEntity> GetEntityByIdAsync(int id)
-            => await this._dbContext.FindAsync<TEntity>(id);    // TODO: Will it be able to Include?
+        public async Task<TEntityDTO> GetEntityByIdAsync(int id)
+            => this._mapper.Map<TEntityDTO>(await this._dbContext.FindAsync<TEntity>(id));    // TODO: Will it be able to Include?
 
-        public async Task<TEntity> UpdateEntityAsync(int id, TEntity entityDTO, ClaimsPrincipal User)
+        public async Task<TEntityDTO> UpdateEntityAsync(int id, TEntityDTO entityDTO, ClaimsPrincipal User)
         {
             // TODO: Chech if User isn't null 
 
@@ -56,7 +62,8 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
             //_dbContext.Entry(entity).State = EntityState.Detached;
             //var updatedEntity = this._dbContext.Update(entityDTO);    // TODO: Which PUT method is better?
 
-            this._dbContext.Entry(entity).CurrentValues.SetValues(entityDTO);
+            var newEntity = this._mapper.Map<TEntity>(entityDTO);
+            this._dbContext.Entry(entity).CurrentValues.SetValues(newEntity);
             
             //var user = await this._userManager.GetUserAsync(User);
             entity.ModifiedOn = DateTime.Now;
@@ -64,26 +71,28 @@ namespace SofiaTeachersOnline.Services.Services.Abstracts
 
             await this._dbContext.SaveChangesAsync();
 
-            return entity;
+            return entityDTO;
         }
 
-/*        public async Task<TEntity> PatchEntityAsync(int id, JsonPatchDocument<TEntity> entityPatch)     // TODO: PATCH NOT WORKING!!!
-        {
-            // TODO: Add validation for entityId
+        /*        
+                public async Task<TEntityDTO> PatchEntityAsync(int id, JsonPatchDocument<TEntityDTO> entityPatch)     // TODO: PATCH NOT WORKING!!!
+                {
+                    // TODO: Add validation for entityId
 
-            var entity = await this._dbContext.FindAsync<TEntity>(id);
+                    var entity = await this._dbContext.FindAsync<TEntity>(id);
 
-            if (entity == null)
-            {
-                throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
-                // TODO: Better error hanling!
-            }
+                    if (entity == null)
+                    {
+                        throw new ArgumentException(string.Format(SofiaTeachersOnlineConstants.ExceptionMessages.EntityNotFound, typeof(TEntity).Name, id));
+                        // TODO: Better error hanling!
+                    }
 
-            // TODO: Add EditedOn and EditedBy?
-            entityPatch.ApplyTo(entity);
-            await this._dbContext.SaveChangesAsync();
-            return default;
-        }*/
+                    // TODO: Add EditedOn and EditedBy?
+                    entityPatch.ApplyTo(entity);
+                    await this._dbContext.SaveChangesAsync();
+                    return default;
+                }
+        */
 
         public async Task DeleteEntityAsync(int id)
         {
