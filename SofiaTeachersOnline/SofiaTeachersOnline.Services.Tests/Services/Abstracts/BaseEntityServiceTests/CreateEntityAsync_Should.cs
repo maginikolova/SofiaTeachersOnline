@@ -1,4 +1,4 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using SofiaTeachersOnline.Database;
@@ -22,17 +22,24 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
     {
         private SofiaTeachersOnlineDbContext _dbContext;
         private IEnumerable<GradeDTO> _entities;
-        private Mock<IMapper> _mapperMock;
+        private Mock<IMapper> _mapper;
+        private EntityServiceMock _unit;
 
         [SetUp]
         public void Setup()
         {
+            // Mock database
             var options = Utils.GetOptions(Guid.NewGuid().ToString());
             this._dbContext = new SofiaTeachersOnlineDbContext(options);
-            
+
+            // Setup test data
             this._entities = Utils.GetGradeDTOs();
 
-            this._mapperMock = new Mock<IMapper>();     // TODO: How to mock Automapper
+            // Mock AutoMapper
+            this._mapper = new Mock<IMapper>();
+
+            // Arrange
+            this._unit = new EntityServiceMock(this._dbContext, this._mapper.Object);
         }
 
         [Test]
@@ -40,10 +47,18 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
         {
             // Arrange
             var expected = _entities.First();
-            var entityServiceMock = new EntityServiceMock(this._dbContext, _mapperMock.Object);
+
+            this._mapper.Setup(x => x.Map<Grade>(expected))
+                .Returns(new Grade 
+                { 
+                    Id = expected.Id,
+                    TeacherId = expected.TeacherId,
+                    StudentId = expected.StudentId,
+                    ExerciseId = expected.ExerciseId
+                });
 
             // Act
-            var result = await entityServiceMock.CreateEntityAsync(expected);
+            var result = await this._unit.CreateEntityAsync(expected);
 
             // Assert
             Assert.AreEqual(expected.Id, result.Id);
@@ -55,12 +70,8 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
         [Test]
         public void ThrowWhen_EntityIsNull()
         {
-            // Arrange
-            var entityServiceMock = new EntityServiceMock(this._dbContext, this._mapperMock.Object);
-
             // Act & Assert
-            Assert.ThrowsAsync<ArgumentNullException>(() => entityServiceMock.CreateEntityAsync(null));
+            Assert.ThrowsAsync<ArgumentNullException>(() => this._unit.CreateEntityAsync(null));
         }
     }
 }
-*/      // TODO: Fix unit tests

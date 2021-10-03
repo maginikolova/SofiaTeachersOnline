@@ -1,6 +1,9 @@
-﻿/*using NUnit.Framework;
+﻿using AutoMapper;
+using Moq;
+using NUnit.Framework;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
+using SofiaTeachersOnline.Services.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +14,48 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
     [TestFixture]
     public class GetEntityByIdAsync_Should
     {
-        private IEnumerable<Grade> _entities;
         private SofiaTeachersOnlineDbContext _dbContext;
+        private IEnumerable<Grade> _entities;
+        private Mock<IMapper> _mapper;
+        private EntityServiceMock _unit;
 
         [SetUp]
         public async Task Setup()
         {
+            // Mock database
             var options = Utils.GetOptions(Guid.NewGuid().ToString());
             this._dbContext = new SofiaTeachersOnlineDbContext(options);
 
+            // Setup test data
             this._entities = Utils.GetGrades();
 
             await this._dbContext.Grades.AddRangeAsync(this._entities);
             await this._dbContext.SaveChangesAsync();
+
+            // Mock AutoMapper
+            this._mapper = new Mock<IMapper>();
+
+            // Arrange
+            this._unit = new EntityServiceMock(this._dbContext, this._mapper.Object);
         }
 
         [Test]
         public async Task GetCorrectEntityWhen_ValidParams()
         {
             // Arrange
-            var entityServiceMock = new EntityServiceMock(this._dbContext);
             var expected = this._entities.Skip(1).First();
 
+            this._mapper.Setup(x => x.Map<GradeDTO>(expected))
+                .Returns(new GradeDTO
+                {
+                    Id = expected.Id,
+                    TeacherId = expected.TeacherId,
+                    StudentId = expected.StudentId,
+                    ExerciseId = expected.ExerciseId
+                });
+
             // Act
-            var result = await entityServiceMock.GetEntityByIdAsync(expected.Id);
+            var result = await this._unit.GetEntityByIdAsync(expected.Id);
 
             // Assert
             Assert.AreEqual(expected.Id, result.Id);
@@ -46,11 +67,8 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
         [Test]
         public async Task ReturnNullEntityWhen_WrongId()
         {
-            // Arrange
-            var entityServiceMock = new EntityServiceMock(this._dbContext);
-
             // Act
-            var result = await entityServiceMock.GetEntityByIdAsync(-1);
+            var result = await this._unit.GetEntityByIdAsync(-1);
 
             //Assert
             Assert.IsNull(result);
@@ -58,7 +76,7 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
     }
 }
 
-*//*
+/*
 // If we use Assert.Multiple() then NUnit is storing any failures encountered in the block and reporting all of them
 // together upon exit from the block. If both asserts failed, then both would be reported.
 // Otherwise the test would stop on the first assert

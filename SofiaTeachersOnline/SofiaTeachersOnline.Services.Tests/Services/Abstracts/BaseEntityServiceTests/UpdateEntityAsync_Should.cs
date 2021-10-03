@@ -1,7 +1,10 @@
-﻿/*using NUnit.Framework;
+﻿using AutoMapper;
+using Moq;
+using NUnit.Framework;
 using SofiaTeachersOnline.Database;
 using SofiaTeachersOnline.Database.Models;
 using SofiaTeachersOnline.Database.Models.Enums;
+using SofiaTeachersOnline.Services.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,41 +15,58 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
     [TestFixture]
     public class UpdateEntityAsync_Should
     {
-        private IEnumerable<Grade> _entities;
         private SofiaTeachersOnlineDbContext _dbContext;
+        private IEnumerable<Grade> _entities;
+        private Mock<IMapper> _mapper;
+        private EntityServiceMock _unit;
 
         [SetUp]
         public async Task Setup()
         {
+            // Mock database
             var options = Utils.GetOptions(Guid.NewGuid().ToString());
             this._dbContext = new SofiaTeachersOnlineDbContext(options);
 
+            // Setup test data
             this._entities = Utils.GetGrades();
 
             await this._dbContext.Grades.AddRangeAsync(this._entities);
             await this._dbContext.SaveChangesAsync();
+
+            // Mock AutoMapper
+            this._mapper = new Mock<IMapper>();
+
+            // Arrange
+            this._unit = new EntityServiceMock(this._dbContext, this._mapper.Object);
         }
 
         [Test]
         public async Task UpdateEntityWhen_ValidParams()
         {
             // Arrange
-            var entityServiceMock = new EntityServiceMock(this._dbContext);
-            var toBeUpdatedId = this._entities.First().Id;
-            var expected = new Grade
+            var toBeUpdated = this._entities.First();
+            var expected = new GradeDTO
             {
-                Id = toBeUpdatedId,
+                Id = toBeUpdated.Id,
                 StudentId = Guid.NewGuid(),
                 TeacherId = Guid.NewGuid(),
                 ExerciseId = 1,
                 Mark = Mark.B
             };
+            this._mapper.Setup(x => x.Map<Grade>(expected))
+                .Returns(new Grade
+                {
+                    Id = expected.Id,
+                    TeacherId = expected.TeacherId,
+                    StudentId = expected.StudentId,
+                    ExerciseId = expected.ExerciseId
+                });
 
             // Act
-            var result = await entityServiceMock.UpdateEntityAsync(toBeUpdatedId, expected, null);
+            var result = await this._unit.UpdateEntityAsync(toBeUpdated.Id, expected, null);
 
             // Assert
-            Assert.AreEqual(toBeUpdatedId, result.Id);
+            Assert.AreEqual(toBeUpdated.Id, result.Id);
             Assert.AreEqual(expected.TeacherId, result.TeacherId);
             Assert.AreEqual(expected.StudentId, result.StudentId);
             Assert.AreEqual(expected.ExerciseId, result.ExerciseId);
@@ -56,12 +76,10 @@ namespace SofiaTeachersOnline.Services.Tests.Services.Abstracts.BaseEntityServic
         public void ThrowWhen_EntityIsNull()
         {
             // Arrange
-            var entityServiceMock = new EntityServiceMock(this._dbContext);
             var toBeUpdatedId = this._entities.First().Id;
 
             // Act & Assert
-            Assert.ThrowsAsync<ArgumentNullException>(() => entityServiceMock.UpdateEntityAsync(toBeUpdatedId, null, null));
+            Assert.ThrowsAsync<ArgumentNullException>(() => this._unit.UpdateEntityAsync(toBeUpdatedId, null, null));
         }
     }
 }
-*/
