@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,18 +14,18 @@ namespace SofiaTeachersOnline.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEntityService<Course, CourseDTO> courseService;
+        private readonly IEntityService<Course, CourseDTO> _courseService;
 
         public HomeController(IEntityService<Course, CourseDTO> courseService)
         {
-            this.courseService = courseService;
+            this._courseService = courseService ?? throw new ArgumentNullException(nameof(courseService));
         }
 
         // GET: Home
         public async Task<IActionResult> Index()
         {
             //var sofiaTeachersOnlineDbContext = _context.Courses.Include(c => c.ModifiedByUser).Include(c => c.Teacher);
-            var courses = courseService.GetAllEntities();
+            var courses = _courseService.GetAllEntities();
             return View(courses);
         }
 
