@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +15,13 @@ namespace SofiaTeachersOnline.Web.Controllers
     {
         private readonly SofiaTeachersOnlineDbContext _context;
         private readonly IEntityService<Course, CourseDTO> _courseService;
+        private readonly IEntityService<Lesson, LessonDTO> _lessonService;
 
-        public CourseController(SofiaTeachersOnlineDbContext context, IEntityService<Course, CourseDTO> courseService)
+        public CourseController(SofiaTeachersOnlineDbContext context, IEntityService<Course, CourseDTO> courseService, IEntityService<Lesson, LessonDTO> lessonService)
         {
             this._context = context ?? throw new ArgumentNullException(nameof(context));
             this._courseService = courseService ?? throw new ArgumentNullException(nameof(courseService));
+            this._lessonService = lessonService ?? throw new ArgumentNullException(nameof(courseService));
         }
 
         // GET: Courses
@@ -40,8 +41,15 @@ namespace SofiaTeachersOnline.Web.Controllers
 
             var course = await this._courseService.GetEntityByIdAsync(id.Value);
 
+            var lessons = this._lessonService.GetAllEntities()
+                .ToList()
+                .Where(x => x.CourseId == course.Id);
+
+            course.Lessons = lessons.ToList();
+/*
             var course2 = this._courseService.GetAllEntities()
-                .Include(x => x.CourseProgress);
+                .Include(x => x.CourseProgress)
+                .ToList();*/
 
 
             if (course == null)

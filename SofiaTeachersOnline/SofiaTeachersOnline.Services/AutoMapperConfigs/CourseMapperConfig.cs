@@ -8,8 +8,10 @@ namespace SofiaTeachersOnline.Services.AutoMapperConfigs
     {
         public CourseMapperConfig()
         {
-            this.CreateMap<Course, CourseDTO>();  // TODO: Find out why .ReverseMap() is bad
-            this.CreateMap<CourseDTO, Course>();
+            this.CreateMap<Course, CourseDTO>()
+                .IncludeAllDerived();               // TODO: Does this even work?
+            this.CreateMap<CourseDTO, Course>();    // TODO: Find out why .ReverseMap() is bad
+
         }
     }
 }

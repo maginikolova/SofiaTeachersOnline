@@ -131,14 +131,14 @@ namespace SofiaTeachersOnline.Database.Seeder
                 new Exercise
                 {
                     Id = 1,
-                    CourseId = 1,
+                    LessonId = 1,
                     Content = "some content",
                    // Grades = new List<Grade> {new Grade(), new Grade()},
                 },
                 new Exercise
                 {
                     Id = 2,
-                    CourseId = 2,
+                    LessonId = 2,
                     Content = "some content2",
                    // Grades = new List<Grade> {new Grade()},
                 }
@@ -168,6 +168,39 @@ namespace SofiaTeachersOnline.Database.Seeder
                 }
             };
             builder.Entity<Grade>().HasData(grades);
+
+            // Lessons
+            var lessons = new List<Lesson>()
+            {
+                new Lesson
+                {
+                    Id = 1,
+                    CourseId = 1,
+                    NumberOfLesson = 1,
+                    Name = "some name",
+                    Content = "some content",
+                   // Grades = new List<Grade> {new Grade(), new Grade()},
+                },
+                new Lesson
+                {
+                    Id = 2,
+                    CourseId = 1,
+                    NumberOfLesson = 2,
+                    Name = "some name 2",
+                    Content = "some content 2",
+                   // Grades = new List<Grade> {new Grade()},
+                },
+                new Lesson
+                {
+                    Id = 3,
+                    CourseId = 2,
+                    NumberOfLesson = 1,
+                    Name = "some name 3",
+                    Content = "some content 3",
+                   // Grades = new List<Grade> {new Grade()},
+                }
+            };
+            builder.Entity<Lesson>().HasData(lessons);
         }
     }
 }

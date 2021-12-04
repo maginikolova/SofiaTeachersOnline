@@ -19,9 +19,8 @@ namespace SofiaTeachersOnline.Database.Models
 
         // TODO: have interfaces instead of classes? IExercise/IVideo/...?
         public ICollection<CourseProgress> CourseProgress { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
         public ICollection<Student> Students { get; set; }
-        public ICollection<Video> Videos { get; set; }
-        public ICollection<Exercise> Exercises { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
         public Guid? ModifiedByUserId { get; set; }

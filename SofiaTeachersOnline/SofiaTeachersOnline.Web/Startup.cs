@@ -50,6 +50,7 @@ namespace SofiaTeachersOnline.Web
 
             // TODO: Extract all the dependency injection into extension methdo
             services.AddScoped<IEntityService<Course, CourseDTO>, CourseService>();            // TODO: Checkout AddScoped
+            services.AddScoped<IEntityService<Lesson, LessonDTO>, LessonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

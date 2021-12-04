@@ -18,8 +18,7 @@ namespace SofiaTeachersOnline.Services.DTOs
         //coureVersion?
 
         public ICollection<CourseProgressDTO> CourseProgress { get; set; }
+        public ICollection<LessonDTO> Lessons { get; set; }
         public ICollection<Student> Students { get; set; }
-        public ICollection<VideoDTO> Videos { get; set; }
-        public ICollection<ExerciseDTO> Exercises { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace SofiaTeachersOnline.Database.Models
     {
         public string Url { get; set; }
 
-        public int CourseId { get; set; }
-        public Course Course { get; set; }
+        public int LessonId { get; set; }
+        public Lesson Lesson { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
         public Guid? ModifiedByUserId { get; set; }

@@ -10,8 +10,12 @@ namespace SofiaTeachersOnline.Services.DTOs
         public int Id { get; set; }
         public string Content { get; set; }
 
-        public int CourseId { get; set; }
-        public CourseDTO Course { get; set; }  // TODO: Add CourseName here instead of Course?
+        public int LessonId { get; set; }
+        public LessonDTO Lesson { get; set; }
+
+        /*        public int CourseId { get; set; }
+                public CourseDTO Course { get; set; }  // TODO: Add CourseName here instead of Course?*/
+
         public ICollection<GradeDTO> Grades { get; set; }
 
         public DateTime? ModifiedOn { get; set; }

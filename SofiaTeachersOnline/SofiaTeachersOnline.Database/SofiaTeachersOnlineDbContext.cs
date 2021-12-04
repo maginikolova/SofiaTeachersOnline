@@ -19,6 +19,7 @@ namespace SofiaTeachersOnline.Database
         public DbSet<CourseProgress> CourseProgresses { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<Grade> Grades { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
         //public DbSet<Message> Messages { get; set; }
         public DbSet<Notebook> Notebooks { get; set; }
         public DbSet<Rating> Ratings { get; set; }

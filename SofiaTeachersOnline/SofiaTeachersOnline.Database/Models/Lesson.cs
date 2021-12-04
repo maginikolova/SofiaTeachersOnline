@@ -5,14 +5,17 @@ using System.Collections.Generic;
 
 namespace SofiaTeachersOnline.Database.Models
 {
-    public class Exercise : Entity, IModifiable
+    public class Lesson : Entity, IModifiable
     {
+        public int NumberOfLesson { get; set; }
+        public string Name { get; set; }
         public string Content { get; set; }
 
-        public int LessonId { get; set; }
-        public Lesson Lesson { get; set; }
-        
-        public ICollection<Grade> Grades { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
+
+        public ICollection<Video> Videos { get; set; }
+        public ICollection<Exercise> Exercises { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
         public Guid? ModifiedByUserId { get; set; }
